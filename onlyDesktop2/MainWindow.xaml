@@ -45,13 +45,14 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></Image>
+        <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
         <TextBox x:Name="searchTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="60,60,120,60" ></TextBox>
         <Image x:Name="loupeImg" Grid.Row="0" Grid.Column="3" Source="loupe.jpg" Margin="60"></Image>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,30,0,20">
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666"></Button>
-            <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666"></Button>
+            <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
+            
 
         </StackPanel>
 
@@ -63,27 +64,26 @@
             </StackPanel>
 
         </Button>
-        <Button x:Name="printersButton" Grid.Row="1" Grid.Column="0" Content="Drukarki" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
-        <Button x:Name="laptopsButton" Grid.Row="1" Grid.Column="1" Content="Laptopy" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
-        <Button x:Name="computersButton" Grid.Row="1" Grid.Column="2" Content="Komputery" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
-        <Button x:Name="monitorsButton" Grid.Row="1" Grid.Column="3" Content="Monitory" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
+        <Button x:Name="printersButton" Grid.Row="1" Grid.Column="0" Content="Drukarki" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="printersButton_Click" ></Button>
+        <Button x:Name="laptopsButton" Grid.Row="1" Grid.Column="1" Content="Laptopy" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="laptopsButton_Click" ></Button>
+        <Button x:Name="accesoriesButton" Grid.Row="1" Grid.Column="2" Content="Akcesoria" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="accesoriesButton_Click" ></Button>
+        <Button x:Name="monitorsButton" Grid.Row="1" Grid.Column="3" Content="Monitory" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="monitorsButton_Click" ></Button>
         <Button x:Name="showAllProductsButton" Grid.Row="1" Grid.Column="4" Content="Wszystko" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="showAllProductsButton_Click" ></Button>
         <TextBox x:Name="leftPannelTextBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"></TextBox>
-        <!--<TextBox x:Name="mainPannelTextBox" Grid.ColumnSpan="5" Grid.Row="2" Margin="236,20,60,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
-        <ListView Margin="30,20,30,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
+        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Nazwa" Width="150" DisplayMemberBinding="{Binding name}" />
                     <GridViewColumn Header="Typ" Width="70" DisplayMemberBinding="{Binding type}" />
                     <GridViewColumn Header="Cena" Width="70" DisplayMemberBinding="{Binding price}" />
-                    <GridViewColumn Header="Opis" Width="150" DisplayMemberBinding="{Binding description}" />
+                    <GridViewColumn Header="Opis" Width="350" DisplayMemberBinding="{Binding description}" />
 
                 </GridView>
             </ListView.View>
         </ListView>
 
         <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
-
+        <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
     </Grid>
 </Window>

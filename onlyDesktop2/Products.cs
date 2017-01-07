@@ -11,7 +11,7 @@ namespace onlyDesktop2 {
         public string type { get; set; }
         public string description { get; set; }
         public decimal price { get; set; }
-        //public decimal buyPrice { get; set; }
-        //public string codeID { get; set; }
+        public decimal buyPrice { get; set; }
+        public string codeID { get; set; }
     }
 }
