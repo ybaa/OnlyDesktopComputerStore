@@ -77,7 +77,7 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
+        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="Black" FontFamily="Calibri">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF803B3B" Offset="0"/>
