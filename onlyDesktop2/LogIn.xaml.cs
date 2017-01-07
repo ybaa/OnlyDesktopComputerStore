@@ -19,13 +19,8 @@ namespace onlyDesktop2 {
     /// </summary>
     public partial class LogIn : Window {
 
-        public static User u { get; set; }
-
-     
         public LogIn() {
             InitializeComponent();
-            //u.user = Users.Watcher;
-   
         }
 
         private void mailTextBox_GotFocus(object sender, RoutedEventArgs e){
@@ -36,59 +31,54 @@ namespace onlyDesktop2 {
             passwordTextBox.Text = "";
         }
 
-        private void logInButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void logInButton_Click(object sender, RoutedEventArgs e){
             string password = passwordTextBox.Text;
             string username = mailTextBox.Text;
-            u = searchInDatabase(username, password);
+            searchInDatabase(username, password);
             this.Close();
-
         }
 
-        public User searchInDatabase(string username, string password) {
-            User user = new User();
-            user.user = Users.Watcher;
-
+        public void searchInDatabase(string username, string password) {
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
-            SqlCommand command = new SqlCommand("SELECT * FROM Klienci WHERE Mail = '" + username + "'", conn);
 
+            SqlCommand command = new SqlCommand("SELECT * FROM Klienci WHERE Mail = '" + username + "'", conn);
             SqlCommand command2 = new SqlCommand("SELECT * FROM Pracownicy WHERE Mail = '" + username + "'"  , conn);
+
+            int checkIfWorkerOrClientFound = 0;
             try {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
-
+                
                 while (reader.Read()) {
                     string usernameRead = reader["Mail"].ToString();
                     if (usernameRead == username) {
                         string pass = reader["Haslo"].ToString();
                         if (pass == password) {
-                            user.user = Users.Client;                        
-                            return user;
+                            User.user = Users.Client;
+                            checkIfWorkerOrClientFound = 1;                           
                         }
                     }
                 }
 
-                reader = command2.ExecuteReader();
-                while (reader.Read()) {
-                    string usernameRead = reader["Mail"].ToString();
-                    if (usernameRead == username) {
-                        string pass = reader["Haslo"].ToString();
-                        if (pass == password) {
-                            user.user = Users.Worker;
-                            return user;
+                if (checkIfWorkerOrClientFound == 0)                {
+                    reader = command2.ExecuteReader();
+                    while (reader.Read())                    {
+                        string usernameRead = reader["Mail"].ToString();
+                        if (usernameRead == username)                        {
+                            string pass = reader["Haslo"].ToString();
+                            if (pass == password)                            {
+                                User.user = Users.Worker;
+                                checkIfWorkerOrClientFound = 1;                               
+                            }
                         }
                     }
                 }
-
-
             }
             catch (SqlException) {
             }
 
+            if(checkIfWorkerOrClientFound == 0)
             MessageBox.Show("Nie ma takiego użytkownika lub danie nieporpawne");
-
-
-            return user;
         }
 
     }

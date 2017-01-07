@@ -12,7 +12,6 @@ namespace onlyDesktop2 {
     };
 
    public class User {
-       public Users user { get; set; }
-
+       public static Users user { get; set; }
     }
 }

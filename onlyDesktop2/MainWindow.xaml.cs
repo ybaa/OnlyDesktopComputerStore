@@ -24,19 +24,14 @@ namespace onlyDesktop2 {
     /// </summary>
     public partial class MainWindow : Window
     {
-        public User currentUser = new User();
-
         public MainWindow() {
-            InitializeComponent();
-            currentUser.user = Users.Watcher;
-
-            
+            InitializeComponent();            
+            User.user = Users.Watcher;
         }
 
         
 
-        private void showAllProductsButton_Click(object sender, RoutedEventArgs e){
-            
+        private void showAllProductsButton_Click(object sender, RoutedEventArgs e){            
             showProducts("SELECT * FROM Produkty");
 
         }
@@ -69,9 +64,7 @@ namespace onlyDesktop2 {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-
-                while (reader.Read())
-                {
+                while (reader.Read()){
                     int ID = reader.GetInt32(0);
                     string name = reader["Nazwa_produktu"].ToString();
                     string type = reader["Typ_produktu"].ToString();
@@ -81,7 +74,6 @@ namespace onlyDesktop2 {
                     string codeID = reader["ID_kodu"].ToString();
 
                     products.Add(new Products() { ID = ID, name = name, type = type, description = description, price = price, buyPrice = buyPrice, codeID = codeID });
-
                 }
             }
             catch (SqlException) {
@@ -96,38 +88,17 @@ namespace onlyDesktop2 {
 
             LogIn logIn = new LogIn();
             logIn.Show();
-           
-            //MessageBox.Show(logIn.IsVisible.ToString());
-
-            //if (logIn.IsVisible == false) {
-            //    MessageBox.Show("asda");
-            //    currentUser = LogIn.u;
-            //    logIn.Close();
-
-            //    if (currentUser.user == Users.Client) {
-            //        signInButton.Visibility = Visibility.Collapsed;
-            //        signUpButton.Visibility = Visibility.Collapsed;
-            //    }
-            //}
-
-            
         }
 
         private void help_Click(object sender, RoutedEventArgs e) {
-
-            MessageBox.Show("asda");
-            currentUser = LogIn.u;
-            
-
-            if (currentUser.user == Users.Client) {
+            //currentUser = LogIn.u;
+            if (User.user == Users.Client) {
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
             }
-
         }
 
-        private void signUpButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void signUpButton_Click(object sender, RoutedEventArgs e){
             Registration reg = new Registration();
             reg.Show();
         }
