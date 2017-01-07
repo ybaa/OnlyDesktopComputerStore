@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace onlyDesktop2 {
     class Products {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string name { get; set; }
         public string type { get; set; }
         public string description { get; set; }

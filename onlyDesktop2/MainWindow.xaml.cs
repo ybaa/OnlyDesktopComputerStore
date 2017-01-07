@@ -70,8 +70,9 @@ namespace onlyDesktop2 {
                 SqlDataReader reader = command.ExecuteReader();
 
 
-                while (reader.Read()) {
-                    string ID = reader["ID_produktu"].ToString();
+                while (reader.Read())
+                {
+                    int ID = reader.GetInt32(0);
                     string name = reader["Nazwa_produktu"].ToString();
                     string type = reader["Typ_produktu"].ToString();
                     string description = reader["Opis_produktu"].ToString();
@@ -124,6 +125,12 @@ namespace onlyDesktop2 {
             }
 
         }
+
+        private void signUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Registration reg = new Registration();
+            reg.Show();
         }
+    }
     
 }

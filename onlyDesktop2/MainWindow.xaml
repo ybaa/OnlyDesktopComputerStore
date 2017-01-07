@@ -50,7 +50,7 @@
         <Image x:Name="loupeImg" Grid.Row="0" Grid.Column="3" Source="loupe.jpg" Margin="60"></Image>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,30,0,20">
-            <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666"></Button>
+            <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
             <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
             
 

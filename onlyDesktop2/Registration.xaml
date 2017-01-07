@@ -1,0 +1,31 @@
+﻿<Window x:Class="onlyDesktop2.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:onlyDesktop2"
+        mc:Ignorable="d"
+        Title="Registration" Height="334.441" Width="648.036">
+    <Grid Height="325" VerticalAlignment="Top">
+        <Label x:Name="label" Content="Imie" HorizontalAlignment="Left" Margin="26,23,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Nazwisko" HorizontalAlignment="Left" Margin="26,66,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Mail" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Haslo" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="122,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="122,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="122,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="122,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label4" Content="Miejscowosc" HorizontalAlignment="Left" Margin="332,27,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="kod" HorizontalAlignment="Left" Margin="332,66,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label6" Content="ulica" HorizontalAlignment="Left" Margin="332,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="Nr DOmu" HorizontalAlignment="Left" Margin="332,152,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label8" Content="Nr mieszkania" HorizontalAlignment="Left" Margin="332,200,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="cityTextBox" HorizontalAlignment="Left" Height="23" Margin="457,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="zipCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="457,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="streetTextBox" HorizontalAlignment="Left" Height="23" Margin="457,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="homeNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="457,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="localNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="457,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Zarejestruj" HorizontalAlignment="Left" Margin="287,257,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+
+    </Grid>
+</Window>
