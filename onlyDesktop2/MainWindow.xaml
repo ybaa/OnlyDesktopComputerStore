@@ -52,7 +52,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,30,0,20">
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
             <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
-            
+
 
         </StackPanel>
 
@@ -69,8 +69,21 @@
         <Button x:Name="accesoriesButton" Grid.Row="1" Grid.Column="2" Content="Akcesoria" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="accesoriesButton_Click" ></Button>
         <Button x:Name="monitorsButton" Grid.Row="1" Grid.Column="3" Content="Monitory" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="monitorsButton_Click" ></Button>
         <Button x:Name="showAllProductsButton" Grid.Row="1" Grid.Column="4" Content="Wszystko" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="showAllProductsButton_Click" ></Button>
-        <TextBox x:Name="leftPannelTextBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"></TextBox>
+        <TextBox x:Name="leftPannelTextBox" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" >
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF803B3B" Offset="0"/>
+                    <GradientStop Color="#FFE8DCBC" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
         <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF803B3B" Offset="0"/>
+                    <GradientStop Color="#FFE8DCBC" Offset="1"/>
+                </LinearGradientBrush>
+            </ListView.Background>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
