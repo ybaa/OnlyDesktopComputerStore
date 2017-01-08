@@ -6,24 +6,7 @@
         xmlns:local="clr-namespace:onlyDesktop2"
         mc:Ignorable="d"
         Title="MainWindow" Height="709.517" Width="1120.318">
-    <!--<Grid>
-        <Image x:Name="logoImg" Source="logo.png" Width="200" Height="100" Margin="0,10,694,416"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="button_Click" Margin="44,138,0,0"/>
-        <ListView Margin="44,204,100,94" x:Name="myListView ">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
-                    <GridViewColumn Header="Nazwa" Width="150" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="Typ" Width="70" DisplayMemberBinding="{Binding type}" />
-                    <GridViewColumn Header="Cena" Width="70" DisplayMemberBinding="{Binding price}" />
-                    <GridViewColumn Header="Opis" Width="150" DisplayMemberBinding="{Binding description}" />
-
-                </GridView>
-            </ListView.View>
-        </ListView>
-
-    </Grid>-->
-
+  
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -52,11 +35,10 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,30,0,20">
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
             <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
-
-
         </StackPanel>
+        
 
-
+        
         <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
@@ -90,6 +72,7 @@
                     <GridViewColumn Header="Nazwa" Width="150" DisplayMemberBinding="{Binding name}" />
                     <GridViewColumn Header="Typ" Width="70" DisplayMemberBinding="{Binding type}" />
                     <GridViewColumn Header="Cena" Width="70" DisplayMemberBinding="{Binding price}" />
+                    <GridViewColumn Header="W magazynie" Width="70" DisplayMemberBinding="{Binding amount}" />
                     <GridViewColumn Header="Opis" Width="350" DisplayMemberBinding="{Binding description}" />
 
                 </GridView>
@@ -98,5 +81,7 @@
 
         <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
+        <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
+        
     </Grid>
 </Window>

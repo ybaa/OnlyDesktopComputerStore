@@ -13,5 +13,6 @@ namespace onlyDesktop2 {
         public decimal price { get; set; }
         public decimal buyPrice { get; set; }
         public string codeID { get; set; }
+        public int amount { get; set; }
     }
 }

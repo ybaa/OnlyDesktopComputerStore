@@ -53,9 +53,11 @@ namespace onlyDesktop2 {
                     string usernameRead = reader["Mail"].ToString();
                     if (usernameRead == username) {
                         string pass = reader["Haslo"].ToString();
-                        if (pass == password) {
+                        if (pass == password)                        {
+                            MainWindow.clientID = reader.GetInt32(0);
+                            MainWindow.clientName = reader["Imie"].ToString();
                             User.user = Users.Client;
-                            checkIfWorkerOrClientFound = 1;                           
+                            checkIfWorkerOrClientFound = 1;
                         }
                     }
                 }
@@ -81,5 +83,8 @@ namespace onlyDesktop2 {
             MessageBox.Show("Nie ma takiego użytkownika lub danie nieporpawne");
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+
+        }
     }
 }

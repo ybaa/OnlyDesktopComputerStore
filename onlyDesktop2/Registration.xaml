@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="Registration" Height="334.441" Width="648.036">
     <Grid Height="325" VerticalAlignment="Top">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FFB98585" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label x:Name="label" Content="Imie" HorizontalAlignment="Left" Margin="26,23,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Nazwisko" HorizontalAlignment="Left" Margin="26,66,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Mail" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top"/>

@@ -24,6 +24,9 @@ namespace onlyDesktop2 {
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static int clientID;
+        public static string clientName;
+
         public MainWindow() {
             InitializeComponent();            
             User.user = Users.Watcher;
@@ -32,24 +35,24 @@ namespace onlyDesktop2 {
         
 
         private void showAllProductsButton_Click(object sender, RoutedEventArgs e){            
-            showProducts("SELECT * FROM Produkty");
+            showProducts("SELECT * FROM Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu");
 
         }
 
         private void printersButton_Click(object sender, RoutedEventArgs e){
-            showProducts("SELECT * FROM Produkty WHERE Typ_produktu LIKE 'drukarka'");
+            showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'drukarka'");
         }
 
         private void laptopsButton_Click(object sender, RoutedEventArgs e){
-            showProducts("SELECT * FROM Produkty WHERE Typ_produktu LIKE 'laptop'");
+            showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'laptop'");
         }
 
         private void accesoriesButton_Click(object sender, RoutedEventArgs e){
-            showProducts("SELECT * FROM Produkty WHERE Typ_produktu LIKE 'akcesoria'");
+            showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'akcesoria'");
         }
 
         private void monitorsButton_Click(object sender, RoutedEventArgs e){
-            showProducts("SELECT * FROM Produkty WHERE Typ_produktu LIKE 'monitor'");
+            showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'monitor'");
             
         }
 
@@ -71,9 +74,10 @@ namespace onlyDesktop2 {
                     string description = reader["Opis_produktu"].ToString();
                     decimal price = reader.GetDecimal(4);
                     decimal buyPrice = reader.GetDecimal(5);
-                    string codeID = reader["ID_kodu"].ToString();
+                    string codeID = reader["ID_kodu"].ToString();                   
+                    int amount = reader["Ilosc_produktu"] as int? ?? default(int);                   
 
-                    products.Add(new Products() { ID = ID, name = name, type = type, description = description, price = price, buyPrice = buyPrice, codeID = codeID });
+                    products.Add(new Products() { ID = ID, name = name, type = type, description = description, price = price, buyPrice = buyPrice, codeID = codeID, amount = amount });
                 }
             }
             catch (SqlException) {
@@ -88,6 +92,7 @@ namespace onlyDesktop2 {
 
             LogIn logIn = new LogIn();
             logIn.Show();
+            
         }
 
         private void help_Click(object sender, RoutedEventArgs e) {
@@ -95,6 +100,8 @@ namespace onlyDesktop2 {
             if (User.user == Users.Client) {
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
+                helloLabel.Content += clientName;
+                helloLabel.Visibility = Visibility.Visible;
             }
         }
 
