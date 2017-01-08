@@ -22,29 +22,25 @@ namespace onlyDesktop2 {
         public Cart() {
             
             InitializeComponent();
-            
 
+            decimal totalPrice = 0;
             List<Products> products = new List<Products>();
 
             for (int i = 0 ; i < Order.giveMeTHisFuckingID().Count; i++)
             {
-                showProducts(Order.giveMeTHisFuckingID()[i], products);
+                totalPrice = showProducts(Order.giveMeTHisFuckingID()[i], products, totalPrice);
+                
             }
 
             foreach (Products p in products) {
                 myListView.Items.Add(p);
             }
 
-
-
-            //foreach (int i in Order.giveMeTHisFuckingID())
-            //{
-            //    myListView.Items.Add(i);
-            //}
+            summary.Text = totalPrice.ToString();
 
         }
 
-        public void showProducts(int productID, List<Products> products) {
+        public decimal showProducts(int productID, List<Products> products, decimal totalPrice) {
             myListView.Items.Clear();
             ListViewItem lvl = new ListViewItem();
             
@@ -65,6 +61,9 @@ namespace onlyDesktop2 {
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
 
+                    totalPrice += price;
+                    
+
                     products.Add(new Products() {
                         ID = ID,
                         name = name,
@@ -80,7 +79,7 @@ namespace onlyDesktop2 {
             catch (SqlException) {
             }
 
-            
+            return totalPrice;
         }
     }
 }

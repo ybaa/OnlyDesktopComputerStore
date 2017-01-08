@@ -44,7 +44,7 @@
         </ListView>
         <Button x:Name="pay" Content="Zapłać" Grid.Column="4" HorizontalAlignment="Left" Margin="37,52,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="label" Content="Laczny hajs: " Grid.Column="2" HorizontalAlignment="Left" Margin="38,52,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" Grid.Column="2" HorizontalAlignment="Left" Margin="137,57,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="summary" Grid.Column="2" HorizontalAlignment="Left" Margin="137,57,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
 
 
