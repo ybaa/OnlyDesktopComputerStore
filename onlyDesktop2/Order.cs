@@ -6,22 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 
 namespace onlyDesktop2 {
-    class Order
-    {
-        //public static List<int> productsID { get; set; }
-        //private static List<int> productsID;
-
-        //public void setProductsID(int i)
-        //{
-        //    productsID.Add(i);
-        //}
-
-        //public List<int> getProductsID()
-        //{
-        //    return productsID;
-
-        //}
-
+    class Order {
+ 
         private static List<int> productID = new List<int>();
 
         public static void addProduct(int p) {
@@ -31,9 +17,6 @@ namespace onlyDesktop2 {
         public static List<int> giveMeTHisFuckingID() {
             return productID;
         }
-
-        //ublic int ID { get; set; }
-
 
 
     }

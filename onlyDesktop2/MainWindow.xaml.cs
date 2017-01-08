@@ -27,6 +27,7 @@ namespace onlyDesktop2
     {
         public static int clientID;
         public static string clientName;
+        public int amountOfThingsInCart = 0;
 
         public MainWindow()
         {
@@ -68,22 +69,18 @@ namespace onlyDesktop2
 
         }
 
-        public void showProducts(String cmd)
-        {
+        public void showProducts(String cmd){
             myListView.Items.Clear();
             ListViewItem lvl = new ListViewItem();
             List<Products> products = new List<Products>();
-            SqlConnection conn =
-                new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+            SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand(cmd, conn);
 
-            try
-            {
+            try{
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
+                while (reader.Read())                {
                     int ID = reader.GetInt32(0);
                     string name = reader["Nazwa_produktu"].ToString();
                     string type = reader["Typ_produktu"].ToString();
@@ -93,8 +90,7 @@ namespace onlyDesktop2
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
 
-                    products.Add(new Products()
-                    {
+                    products.Add(new Products() {
                         ID = ID,
                         name = name,
                         type = type,
@@ -106,29 +102,23 @@ namespace onlyDesktop2
                     });
                 }
             }
-            catch (SqlException)
-            {
+            catch (SqlException)            {
             }
 
-            foreach (Products p in products)
-            {
+            foreach (Products p in products)            {
                 myListView.Items.Add(p);
             }
         }
 
-        private void signInButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void signInButton_Click(object sender, RoutedEventArgs e){
 
             LogIn logIn = new LogIn();
             logIn.Show();
 
         }
 
-        private void help_Click(object sender, RoutedEventArgs e)
-        {
-            //currentUser = LogIn.u;
-            if (User.user == Users.Client)
-            {
+        private void help_Click(object sender, RoutedEventArgs e){
+            if (User.user == Users.Client){
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
                 helloLabel.Content += clientName;
@@ -136,35 +126,32 @@ namespace onlyDesktop2
             }
         }
 
-        private void signUpButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void signUpButton_Click(object sender, RoutedEventArgs e){
             Registration reg = new Registration();
             reg.Show();
         }
 
-        private void addToCartButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void addToCartButton_Click(object sender, RoutedEventArgs e){
             dynamic selectedItem = myListView.SelectedItem;
             int IDOfSelectedProduct = selectedItem.ID;
+            int amountOfProduct = selectedItem.amount;
 
 
-            if (User.user == Users.Watcher)
-            {
+            if (User.user == Users.Watcher){
                 MessageBox.Show("Zanim dodasz do koszyka zarejestruj się! ");
             }
-            else
-            {
+            else if (amountOfProduct == 0){
+                MessageBox.Show("Brak produktu w magazynie, wkrótce dostawa!");
+            }
+            else{
                Order.addProduct(IDOfSelectedProduct);
-                //Order o = new Order();
-                //o.ID = IDOfSelectedProduct;
-
-                //Order.productsID.Add(IDOfSelectedProduct);
+                amountOfThingsInCart++;
+                cartTextBox.Text = "Koszyk " +  amountOfThingsInCart.ToString();                                
             }
             
         }
 
-        private void ButtonCart_Click(object sender, RoutedEventArgs e)
-        {
+        private void ButtonCart_Click(object sender, RoutedEventArgs e){
             Cart cart = new Cart();
             cart.Show();
         }

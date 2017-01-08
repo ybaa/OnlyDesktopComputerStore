@@ -26,8 +26,7 @@ namespace onlyDesktop2 {
             decimal totalPrice = 0;
             List<Products> products = new List<Products>();
 
-            for (int i = 0 ; i < Order.giveMeTHisFuckingID().Count; i++)
-            {
+            for (int i = 0 ; i < Order.giveMeTHisFuckingID().Count; i++){
                 totalPrice = showProducts(Order.giveMeTHisFuckingID()[i], products, totalPrice);
                 
             }
@@ -80,6 +79,14 @@ namespace onlyDesktop2 {
             }
 
             return totalPrice;
+        }
+
+        private void pay_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void codeTextBlock_GotFocus(object sender, RoutedEventArgs e){
+            codeTextBlock.Text = "";
         }
     }
 }

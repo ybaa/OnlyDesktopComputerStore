@@ -42,7 +42,7 @@
         <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
-                <TextBlock x:Name="cartTextBox" Text="Koszyk - Pusty" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="cartTextBox" Text="Koszyk " HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
 
         </Button>
@@ -59,7 +59,7 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="Black" FontFamily="Calibri">
+        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="Black" FontFamily="Calibri" FontSize="16">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF803B3B" Offset="0"/>

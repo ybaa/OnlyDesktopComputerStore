@@ -9,8 +9,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,7 +23,7 @@
 
 
 
-        <ListView Margin="20,20,20,20" x:Name="myListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Foreground="Black" FontFamily="Calibri">
+        <ListView Margin="50,20,50,20" x:Name="myListView"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Foreground="Black" FontFamily="Calibri" FontSize="20">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF803B3B" Offset="0"/>
@@ -42,10 +42,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="pay" Content="Zapłać" Grid.Column="4" HorizontalAlignment="Left" Margin="37,52,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="Laczny hajs: " Grid.Column="2" HorizontalAlignment="Left" Margin="38,52,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-        <TextBlock x:Name="summary" Grid.Column="2" HorizontalAlignment="Left" Margin="137,57,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-
+        <Button x:Name="pay" Content="Zapłać" Grid.Row="3" Grid.Column="2" Width="200" Height="50" Foreground="Wheat" Background="#3358DC26" FontSize="24" Click="pay_Click"/>
+        <Label x:Name="label" Content="łączna kwota do zapłaty: " Grid.Column="2" HorizontalAlignment="Right" Margin="20,0,20,0" Grid.Row="2"  FontSize="24" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+        <TextBlock x:Name="summary" Grid.Column="4" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" FontSize="24" TextWrapping="Wrap" Text="0,00" VerticalAlignment="Center"/>
+        <TextBox x:Name="codeTextBlock" HorizontalAlignment="Center" Margin="20,0,20,0" Grid.Row="2" TextWrapping="Wrap" Text="Masz kod promocyjny? wpisz go tutaj!" VerticalAlignment="Center" FontSize="20" Width="350" Grid.ColumnSpan="2" Background="#FFAFC9AD" Foreground="Black" GotFocus="codeTextBlock_GotFocus"/>
+        <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
+        <Image x:Name="cartImg" Grid.Row="0" Grid.Column="4" Source="cart2.png"  />
 
 
         <Grid.Background>

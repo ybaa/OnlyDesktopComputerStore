@@ -53,7 +53,7 @@ namespace onlyDesktop2 {
                     string usernameRead = reader["Mail"].ToString();
                     if (usernameRead == username) {
                         string pass = reader["Haslo"].ToString();
-                        if (pass == password)                        {
+                        if (pass == password){
                             MainWindow.clientID = reader.GetInt32(0);
                             MainWindow.clientName = reader["Imie"].ToString();
                             User.user = Users.Client;
@@ -62,13 +62,13 @@ namespace onlyDesktop2 {
                     }
                 }
 
-                if (checkIfWorkerOrClientFound == 0)                {
+                if (checkIfWorkerOrClientFound == 0){
                     reader = command2.ExecuteReader();
-                    while (reader.Read())                    {
+                    while (reader.Read()){
                         string usernameRead = reader["Mail"].ToString();
-                        if (usernameRead == username)                        {
+                        if (usernameRead == username){
                             string pass = reader["Haslo"].ToString();
-                            if (pass == password)                            {
+                            if (pass == password){
                                 User.user = Users.Worker;
                                 checkIfWorkerOrClientFound = 1;                               
                             }

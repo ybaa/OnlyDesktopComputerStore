@@ -22,8 +22,7 @@ namespace onlyDesktop2 {
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
+        private void button_Click(object sender, RoutedEventArgs e){
             string name = NameTextBox.Text;
             string surname = surnameTextBox.Text;
             string mail = mailTextBox.Text;
