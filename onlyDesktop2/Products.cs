@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace onlyDesktop2 {
-    class Products {
+    public class Products {
         public int ID { get; set; }
         public string name { get; set; }
         public string type { get; set; }

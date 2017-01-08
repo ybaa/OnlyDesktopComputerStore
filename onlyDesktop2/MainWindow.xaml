@@ -39,7 +39,7 @@
         
 
         
-        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E">
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
                 <TextBlock x:Name="cartTextBox" Text="Koszyk - Pusty" HorizontalAlignment="Center"></TextBlock>
@@ -79,7 +79,7 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></Button>
+        <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
         
