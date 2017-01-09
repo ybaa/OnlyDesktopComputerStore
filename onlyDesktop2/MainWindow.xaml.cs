@@ -32,7 +32,7 @@ namespace onlyDesktop2
         public MainWindow()
         {
             InitializeComponent();
-            User.user = Users.Client;
+            User.user = Users.Watcher;
         }
 
 
@@ -155,11 +155,14 @@ namespace onlyDesktop2
 
 
                 if (productWasChoodes == false) {
-                    Order.addProduct(IDOfSelectedProduct, 1);
-                    amountOfThingsInCart++;
-                    cartTextBox.Text = "Koszyk " + amountOfThingsInCart.ToString();
                     Products p = new Products();
                     p = selectedItem;
+
+                    Order.addProduct(IDOfSelectedProduct, 1,p.price);
+                    amountOfThingsInCart++;
+                    cartTextBox.Text = "Koszyk " + amountOfThingsInCart.ToString();
+                    
+                    
                     p.amount--;
                     myListView.SelectedItem = p;
                     myListView.Items.Refresh();                    

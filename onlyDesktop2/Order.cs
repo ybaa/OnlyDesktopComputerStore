@@ -11,12 +11,13 @@ namespace onlyDesktop2 {
         //private static List<int> productID = new List<int>();
 
         private static List<List<int>> product = new List<List<int>>();
+        private static List<decimal> prices = new List<decimal>();
 
-
-        public static void addProduct(int p,int i) {
+        public static void addProduct(int p,int i, decimal d) {
             List<int> IDAndAmount = new List<int>();
             IDAndAmount.Add(p);
             IDAndAmount.Add(i);
+            prices.Add(d);
             product.Add(IDAndAmount);
         }
 
@@ -51,6 +52,13 @@ namespace onlyDesktop2 {
                 }
             }
             return ret;
+        }
+
+        public static decimal getPrice(int i)
+        {
+            decimal price;
+            price = prices[i] * product[i][1];
+            return price;
         }
 
     }

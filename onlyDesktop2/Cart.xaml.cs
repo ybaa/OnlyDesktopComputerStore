@@ -83,21 +83,64 @@ namespace onlyDesktop2 {
             return totalPrice;
         }
 
-        private void pay_Click(object sender, RoutedEventArgs e) {
+        private void pay_Click(object sender, RoutedEventArgs e)
+        {
+            decimal pricee = decimal.Parse(summary.Text);
+
+
             MessageBox.Show("Twoje zamowienie zostało złożone, w celu dokonania zapłaty przejdź do zamówień");
             for (int i = 0; i < Order.giveMeProduct().Count; i++) {
-                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1]);
+                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee );
             }
 
         }
 
-        private void addOrderToDatabase(int productID, int piecesOfProducts) {
+        private void addOrderToDatabase(int productID, int piecesOfProducts, decimal price)
+        {
+            
+            int discount = 0;
+            decimal deliveryPrice = 0;
+            if (price < 100)
+                deliveryPrice = 10;
+
+            string priceString = price.ToString();
+            priceString = priceString.Replace(",", ".");
+            string deliveryPriceString = deliveryPrice.ToString();
+            deliveryPriceString = deliveryPriceString.Replace(",", ".");
+            
+
+
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("update Stan_magazynu set Ilosc_produktu = Ilosc_produktu - " + piecesOfProducts + " where ID_produktu = " + productID, conn);
-
+            SqlCommand command2 = new SqlCommand("insert into paki(Cena_przesylki, Cena_calkowita) Values(" +deliveryPriceString + ", " + priceString +")" , conn);
+            SqlCommand command3 = new SqlCommand("select IDENT_CURRENT('Zamowienia')", conn);
+            SqlCommand command4 = new SqlCommand("select COUNT(*) from Pracownicy ", conn);
+            SqlCommand command5 = new SqlCommand("select Adresy.ID_Adresu from Adresy full outer join Klienci_Adresy on Adresy.ID_Adresu = Klienci_Adresy.ID_Adresu full outer join Klienci on Klienci.ID_klienta = Klienci_Adresy.ID_klienta where Klienci.ID_klienta = " + MainWindow.clientID, conn);
             try {
+               
                 conn.Open();
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery();                
+                command2.ExecuteNonQuery();
+                
+                int x = Convert.ToInt32(command3.ExecuteScalar());
+
+                int numberOfWorkers = Convert.ToInt32(command4.ExecuteScalar());
+                
+                Random rand = new Random();
+                int worker = rand.Next(1,numberOfWorkers);
+
+                int addressID = Convert.ToInt32(command5.ExecuteScalar());
+
+                DateTime thisDay = DateTime.Today;
+                for (int i = 0; i < Order.giveMeProduct().Count; i++)
+                {
+                    string priceX = Order.getPrice(i).ToString();
+                    priceX = priceX.Replace(",", ".");
+                    SqlCommand commandHelp = new SqlCommand("insert into Zamowienia(Data_zlozenia, Status_zamowienia,Ilosc_produktu,  Cena_produktu, Rabat,ID_Pracownika, ID_klienta, ID_Adresu, ID_paczki, ID_produktu) " +
+                                                            "values('" + thisDay + "'," + "'zlozono',"+ Order.giveMeProduct()[i][1] +","+ priceX +","+discount+","+worker+","+MainWindow.clientID+","+addressID+","+ x+ "," + Order.giveMeProduct()[i][0] + ")", conn);
+                    commandHelp.ExecuteNonQuery();
+                }
+                MessageBox.Show(thisDay.ToString());
             }
             catch (SqlException) {
             }
