@@ -89,7 +89,7 @@ namespace onlyDesktop2
                     decimal buyPrice = reader.GetDecimal(5);
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
-
+                    int piecesOfProduct = 1;
                     products.Add(new Products() {
                         ID = ID,
                         name = name,
@@ -98,14 +98,15 @@ namespace onlyDesktop2
                         price = price,
                         buyPrice = buyPrice,
                         codeID = codeID,
-                        amount = amount
+                        amount = amount,
+                        piecesOfProduct = piecesOfProduct
                     });
                 }
             }
-            catch (SqlException)            {
+            catch (SqlException){
             }
 
-            foreach (Products p in products)            {
+            foreach (Products p in products){
                 myListView.Items.Add(p);
             }
         }
@@ -135,20 +136,36 @@ namespace onlyDesktop2
             dynamic selectedItem = myListView.SelectedItem;
             int IDOfSelectedProduct = selectedItem.ID;
             int amountOfProduct = selectedItem.amount;
+            bool productWasChoodes = false;
 
-
-            if (User.user == Users.Watcher){
+            if (User.user == Users.Watcher) {
                 MessageBox.Show("Zanim dodasz do koszyka zarejestruj się! ");
             }
-            else if (amountOfProduct == 0){
+            else if (amountOfProduct == 0) {
                 MessageBox.Show("Brak produktu w magazynie, wkrótce dostawa!");
             }
-            else{
-               Order.addProduct(IDOfSelectedProduct);
-                amountOfThingsInCart++;
-                cartTextBox.Text = "Koszyk " +  amountOfThingsInCart.ToString();                                
+            else {
+                for (int i = 0; i < Order.giveMeProduct().Count(); i++) {
+                    if (IDOfSelectedProduct == Order.giveMeProduct()[i][0]) {
+                        MessageBox.Show("Ten produkt zostal juz wybrany, jego ilosc mozesz zmniejszyc w koszyku");
+                        productWasChoodes = true;
+                        break;
+                    }
+                }
+
+
+                if (productWasChoodes == false) {
+                    Order.addProduct(IDOfSelectedProduct, 1);
+                    amountOfThingsInCart++;
+                    cartTextBox.Text = "Koszyk " + amountOfThingsInCart.ToString();
+                    Products p = new Products();
+                    p = selectedItem;
+                    p.amount--;
+                    myListView.SelectedItem = p;
+                    myListView.Items.Refresh();
+                }
             }
-            
+
         }
 
         private void ButtonCart_Click(object sender, RoutedEventArgs e){

@@ -26,14 +26,15 @@ namespace onlyDesktop2 {
             decimal totalPrice = 0;
             List<Products> products = new List<Products>();
 
-            for (int i = 0 ; i < Order.giveMeTHisFuckingID().Count; i++){
-                totalPrice = showProducts(Order.giveMeTHisFuckingID()[i], products, totalPrice);
+            for (int i = 0 ; i < Order.giveMeProduct().Count; i++){
+                totalPrice = showProducts(Order.giveMeProduct()[i][0], products, totalPrice);
                 
             }
 
             foreach (Products p in products) {
-                myListView.Items.Add(p);
+                myListView.Items.Add(p);                
             }
+            
 
             summary.Text = totalPrice.ToString();
 
@@ -50,7 +51,8 @@ namespace onlyDesktop2 {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read()) {
+                while (reader.Read())
+                {
                     int ID = reader.GetInt32(0);
                     string name = reader["Nazwa_produktu"].ToString();
                     string type = reader["Typ_produktu"].ToString();
@@ -59,11 +61,12 @@ namespace onlyDesktop2 {
                     decimal buyPrice = reader.GetDecimal(5);
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
-
+                    int piecesOfProduct = 1;
                     totalPrice += price;
-                    
 
-                    products.Add(new Products() {
+
+                    products.Add(new Products()
+                    {
                         ID = ID,
                         name = name,
                         type = type,
@@ -71,7 +74,8 @@ namespace onlyDesktop2 {
                         price = price,
                         buyPrice = buyPrice,
                         codeID = codeID,
-                        amount = amount
+                        amount = amount,
+                        piecesOfProduct = piecesOfProduct
                     });
                 }
             }
@@ -81,12 +85,49 @@ namespace onlyDesktop2 {
             return totalPrice;
         }
 
-        private void pay_Click(object sender, RoutedEventArgs e) {
+        private void pay_Click(object sender, RoutedEventArgs e){
+            MessageBox.Show("Twoje zamowienie zostało złożone, w celu dokonania zapłaty przejdź do zamówień");
 
         }
 
         private void codeTextBlock_GotFocus(object sender, RoutedEventArgs e){
             codeTextBlock.Text = "";
+        }
+
+        private void incrementAmountOfProductButton_Click(object sender, RoutedEventArgs e) {
+
+            
+
+            dynamic selectedItem = myListView.SelectedItem;
+
+            if (selectedItem == null)
+            {
+
+            }
+            else
+            {
+                Products p = new Products();
+                p = selectedItem;
+                if (p.piecesOfProduct >= p.amount)
+                {
+                    MessageBox.Show("Nie możesz kupic wiecej tego produktu");
+                }
+                else
+                {
+                    p.piecesOfProduct++;
+                    myListView.SelectedItem = p;
+                    myListView.Items.Refresh();
+                }
+
+
+
+            }
+
+
+
+
+
+
         }
     }
 }
