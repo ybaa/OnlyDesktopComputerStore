@@ -20,6 +20,17 @@ namespace onlyDesktop2 {
             product.Add(IDAndAmount);
         }
 
+        public static void removeProduct(int id)
+        {
+            for (int i = 0; i < product.Count(); i++)
+            {
+                if (product[i][0] == id)
+                {
+                    product.RemoveAt(i);
+                }
+            }
+        }
+
         public static List<List<int>> giveMeProduct() {
             return product;
         }
