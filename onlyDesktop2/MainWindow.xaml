@@ -39,7 +39,7 @@
         
 
         
-        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
+        <Button x:Name="cartButton" Visibility="Collapsed" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
                 <TextBlock x:Name="cartTextBox" Text="Koszyk " HorizontalAlignment="Center"></TextBlock>

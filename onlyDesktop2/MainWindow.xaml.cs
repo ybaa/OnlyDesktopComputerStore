@@ -16,71 +16,63 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 
-namespace onlyDesktop2
-{
+namespace onlyDesktop2 {
 
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
         public static int clientID;
         public static string clientName;
         public int amountOfThingsInCart = 0;
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
             User.user = Users.Watcher;
         }
 
 
 
-        private void showAllProductsButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void showAllProductsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "SELECT * FROM Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu");
 
         }
 
-        private void printersButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void printersButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'drukarka'");
         }
 
-        private void laptopsButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void laptopsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'laptop'");
         }
 
-        private void accesoriesButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void accesoriesButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'akcesoria'");
         }
 
-        private void monitorsButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void monitorsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'monitor'");
 
         }
 
-        public void showProducts(String cmd){
+        public void showProducts(String cmd) {
             myListView.Items.Clear();
             ListViewItem lvl = new ListViewItem();
             List<Products> products = new List<Products>();
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand(cmd, conn);
 
-            try{
+            try {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())                {
+                while (reader.Read()) {
                     int ID = reader.GetInt32(0);
                     string name = reader["Nazwa_produktu"].ToString();
                     string type = reader["Typ_produktu"].ToString();
@@ -103,23 +95,24 @@ namespace onlyDesktop2
                     });
                 }
             }
-            catch (SqlException){
+            catch (SqlException) {
             }
 
-            foreach (Products p in products){
+            foreach (Products p in products) {
                 myListView.Items.Add(p);
             }
         }
 
-        private void signInButton_Click(object sender, RoutedEventArgs e){
+        private void signInButton_Click(object sender, RoutedEventArgs e) {
 
             LogIn logIn = new LogIn();
             logIn.Show();
-            
+
         }
 
-        private void help_Click(object sender, RoutedEventArgs e){
-            if (User.user == Users.Client){
+        private void help_Click(object sender, RoutedEventArgs e) {
+            if (User.user == Users.Client) {
+                cartButton.Visibility = Visibility.Visible;
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
                 helloLabel.Content += clientName;
@@ -127,12 +120,12 @@ namespace onlyDesktop2
             }
         }
 
-        private void signUpButton_Click(object sender, RoutedEventArgs e){
+        private void signUpButton_Click(object sender, RoutedEventArgs e) {
             Registration reg = new Registration();
             reg.Show();
         }
 
-        private void addToCartButton_Click(object sender, RoutedEventArgs e){
+        private void addToCartButton_Click(object sender, RoutedEventArgs e) {
             dynamic selectedItem = myListView.SelectedItem;
             int IDOfSelectedProduct = selectedItem.ID;
             int amountOfProduct = selectedItem.amount;
@@ -158,21 +151,21 @@ namespace onlyDesktop2
                     Products p = new Products();
                     p = selectedItem;
 
-                    Order.addProduct(IDOfSelectedProduct, 1,p.price);
+                    Order.addProduct(IDOfSelectedProduct, 1, p.price);
                     amountOfThingsInCart++;
                     cartTextBox.Text = "Koszyk " + amountOfThingsInCart.ToString();
-                    
-                    
+
+
                     p.amount--;
                     myListView.SelectedItem = p;
-                    myListView.Items.Refresh();                    
+                    myListView.Items.Refresh();
                     //Order.setPiecesOfProduct(IDOfSelectedProduct,);
                 }
             }
 
         }
 
-        private void ButtonCart_Click(object sender, RoutedEventArgs e){
+        private void ButtonCart_Click(object sender, RoutedEventArgs e) {
             Cart cart = new Cart();
             cart.Show();
         }
