@@ -61,7 +61,7 @@ namespace onlyDesktop2 {
                     decimal buyPrice = reader.GetDecimal(5);
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
-                    int piecesOfProduct = 1;
+                    int piecesOfProduct = Order.giveMeAmountOfProductsWithThisID(ID);
                     totalPrice += price;
 
 
@@ -95,39 +95,44 @@ namespace onlyDesktop2 {
         }
 
         private void incrementAmountOfProductButton_Click(object sender, RoutedEventArgs e) {
-
-            
-
             dynamic selectedItem = myListView.SelectedItem;
 
-            if (selectedItem == null)
-            {
-
+            if (selectedItem == null) { // no items selected
             }
-            else
-            {
+            else {
                 Products p = new Products();
                 p = selectedItem;
-                if (p.piecesOfProduct >= p.amount)
-                {
+                if (p.piecesOfProduct >= p.amount) {
                     MessageBox.Show("Nie możesz kupic wiecej tego produktu");
                 }
-                else
-                {
+                else {
                     p.piecesOfProduct++;
+                    myListView.SelectedItem = p; 
+                    Order.setPiecesOfProduct(p.ID,p.piecesOfProduct);
+                    MessageBox.Show(Order.giveMeAmountOfProductsWithThisID(p.ID).ToString());
+                    myListView.Items.Refresh();
+                }
+            }
+        }
+
+        private void decrementAmountOfProductButton_Click(object sender, RoutedEventArgs e) {
+            dynamic selectedItem = myListView.SelectedItem;
+
+            if (selectedItem == null) { // no items selected
+            }
+            else {
+                Products p = new Products();
+                p = selectedItem;
+                if (p.piecesOfProduct == 0) {
+                    
+                }
+                else {
+                    p.piecesOfProduct--;
                     myListView.SelectedItem = p;
                     myListView.Items.Refresh();
                 }
-
-
-
             }
-
-
-
-
-
-
         }
     }
+    
 }

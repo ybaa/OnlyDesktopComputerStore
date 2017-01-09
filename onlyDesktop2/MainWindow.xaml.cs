@@ -115,7 +115,7 @@ namespace onlyDesktop2
 
             LogIn logIn = new LogIn();
             logIn.Show();
-
+            
         }
 
         private void help_Click(object sender, RoutedEventArgs e){
@@ -162,7 +162,8 @@ namespace onlyDesktop2
                     p = selectedItem;
                     p.amount--;
                     myListView.SelectedItem = p;
-                    myListView.Items.Refresh();
+                    myListView.Items.Refresh();                    
+                    //Order.setPiecesOfProduct(IDOfSelectedProduct,);
                 }
             }
 
