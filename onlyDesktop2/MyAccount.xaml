@@ -32,15 +32,26 @@
                 <GridView>
                     <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Nazwa" Width="170" DisplayMemberBinding="{Binding orderDate}"/>
-                        <GridViewColumn Header="Typ" Width="120"  DisplayMemberBinding="{Binding status}"/>
+                    <GridViewColumn Header="Typ" Width="120"  DisplayMemberBinding="{Binding status}"/>
                     <GridViewColumn Header="Cena" Width="150" DisplayMemberBinding="{Binding price}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="myDataButton" Grid.Row="0" Grid.Column="2" Content="Moje Dane" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ></Button>
+        <Button x:Name="myDataButton" Grid.Row="0" Grid.Column="2" Content="Moje Dane" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="myDataButton_Click"  ></Button>
         <Button x:Name="myOrdersButton" Grid.Row="0" Grid.Column="3" Content="Moje Zamówienia" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="myOrdersButton_Click" ></Button>
         <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
-       
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="24" Margin="30,83,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Imie" VerticalAlignment="Top" Width="120" Grid.Column="1" IsEnabled="False"/>
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="22" Margin="30,129,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Width="120" Grid.Column="1" IsEnabled="False"/>
+        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="24" Margin="30,175,0,0" Grid.Row="1" TextWrapping="Wrap" Text="mail" VerticalAlignment="Top" Width="120" Grid.Column="1" IsEnabled="False"/>
+        <TextBox x:Name="cityTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="38,83,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Miejscowosc" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="zipCodeTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="38,129,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Kod pocztowy" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="streetTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="38,185,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Ulica" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="houseNumberTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="38,238,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Numer domu" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="localNumberTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="38,280,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Nuer mieszkania" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Button x:Name="editDataButton" Content="Edytuj dane" Grid.Column="1" HorizontalAlignment="Left" Margin="52,57,0,0" Grid.Row="2" VerticalAlignment="Top" Width="76" Click="editDataButton_Click"/>
+        <Button x:Name="editPasswordButton" Content="Zmien hasło" Grid.Column="2" HorizontalAlignment="Left" Margin="53,57,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="finishEditionButton" Content="Zakoncz edycje" Grid.Column="1" HorizontalAlignment="Left" Margin="52,77,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="finishEditionButton_Click"/>
+
 
 
         <Grid.Background>
