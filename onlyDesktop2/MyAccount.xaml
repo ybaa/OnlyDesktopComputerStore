@@ -11,7 +11,7 @@
             <RowDefinition Height="1.5*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -21,9 +21,7 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-
-
-        <ListView Margin="50,20,50,20" x:Name="myListView"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Foreground="Black" FontFamily="Calibri" FontSize="20">
+        <ListView DisplayMemberPath=""  Visibility="Collapsed" Margin="50,40,50,20" x:Name="myListView"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Foreground="Black" FontFamily="Calibri" FontSize="16">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF803B3B" Offset="0"/>
@@ -32,22 +30,15 @@
             </ListView.Background>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding ID}" />
-                    <GridViewColumn Header="Nazwa" Width="170" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="Typ" Width="120" DisplayMemberBinding="{Binding type}" />
-                    <GridViewColumn Header="Cena" Width="80" DisplayMemberBinding="{Binding price}" />
-                    <GridViewColumn Header="W magazynie" Width="150" DisplayMemberBinding="{Binding amount}" />
-                    <GridViewColumn Header="Opis" Width="200" DisplayMemberBinding="{Binding description}" />
-
+                    <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="Nazwa" Width="170" DisplayMemberBinding="{Binding orderDate}"/>
+                        <GridViewColumn Header="Typ" Width="120"  DisplayMemberBinding="{Binding status}"/>
+                    <GridViewColumn Header="Cena" Width="150" DisplayMemberBinding="{Binding price}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button x:Name="myDataButton" Grid.Row="0" Grid.Column="2" Content="Moje Dane" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ></Button>
-        <Button x:Name="myOrdersButton" Grid.Row="0" Grid.Column="3" Content="Moje Zamówienia" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ></Button>
-        <Button x:Name="pay" Content="Zapłać" Grid.Row="3" Grid.Column="2" Width="200" Height="50" Foreground="Wheat" Background="#3358DC26" FontSize="24"/>
-        <Label x:Name="label" Content="łączna kwota do zapłaty: " Grid.Column="2" HorizontalAlignment="Right" Margin="20,0,20,0" Grid.Row="2"  FontSize="24" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
-        <TextBlock x:Name="summary" Grid.Column="4" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" FontSize="24" TextWrapping="Wrap" Text="0,00" VerticalAlignment="Center"/>
-        <TextBox x:Name="codeTextBlock" HorizontalAlignment="Center" Margin="20,0,20,0" Grid.Row="2" TextWrapping="Wrap" Text="Masz kod promocyjny? wpisz go tutaj!" VerticalAlignment="Center" FontSize="20" Width="350" Grid.ColumnSpan="2" Background="#FFAFC9AD" Foreground="Black"/>
+        <Button x:Name="myOrdersButton" Grid.Row="0" Grid.Column="3" Content="Moje Zamówienia" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="myOrdersButton_Click" ></Button>
         <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
        
 

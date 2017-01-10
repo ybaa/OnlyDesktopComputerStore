@@ -63,7 +63,6 @@ namespace onlyDesktop2 {
                     int piecesOfProduct = Order.giveMeAmountOfProductsWithThisID(ID);
                     totalPrice += price;
 
-
                     products.Add(new Products() {
                         ID = ID,
                         name = name,

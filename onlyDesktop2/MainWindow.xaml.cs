@@ -32,12 +32,9 @@ namespace onlyDesktop2 {
             User.user = Users.Watcher;
         }
 
-
-
         private void showAllProductsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "SELECT * FROM Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu");
-
         }
 
         private void printersButton_Click(object sender, RoutedEventArgs e) {
@@ -113,6 +110,7 @@ namespace onlyDesktop2 {
         private void help_Click(object sender, RoutedEventArgs e) {
             if (User.user == Users.Client) {
                 cartButton.Visibility = Visibility.Visible;
+                myAccountButton.Visibility = Visibility.Visible;
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
                 helloLabel.Content += clientName;
@@ -168,6 +166,12 @@ namespace onlyDesktop2 {
         private void ButtonCart_Click(object sender, RoutedEventArgs e) {
             Cart cart = new Cart();
             cart.Show();
+        }
+
+        private void myAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyAccount acc = new MyAccount();
+            acc.Show();
         }
     }
 }

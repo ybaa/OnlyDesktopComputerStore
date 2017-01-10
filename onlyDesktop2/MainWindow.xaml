@@ -36,9 +36,9 @@
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
             <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
         </StackPanel>
-        
 
-        
+
+        <Button x:Name="myAccountButton" Grid.Row="0" Grid.Column="4" Width="200" Height="25" Margin="0,0,0,0" HorizontalAlignment="Center" Content="Moje Konto" FontSize="16" Foreground= "Wheat" Background="#33686666" Visibility="Collapsed" Click="myAccountButton_Click"></Button>
         <Button x:Name="cartButton" Visibility="Collapsed" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
@@ -82,6 +82,6 @@
         <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
-        
+
     </Grid>
 </Window>
