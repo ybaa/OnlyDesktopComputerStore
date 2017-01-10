@@ -24,14 +24,13 @@ namespace onlyDesktop2 {
             SqlConnection conn =
                 new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command =
-                new SqlCommand("select * from Adresy full outer join Klienci_Adresy on Adresy.ID_Adresu = Klienci_Adresy.ID_Adresu full outer join Klienci on Klienci.ID_klienta = Klienci_Adresy.ID_klienta where Klienci.ID_klienta =" +MainWindow.clientID, conn);
+                new SqlCommand("select * from Adresy full outer join Klienci_Adresy on Adresy.ID_Adresu = Klienci_Adresy.ID_Adresu full outer join Klienci on Klienci.ID_klienta = Klienci_Adresy.ID_klienta where Klienci.ID_klienta =" + MainWindow.clientID, conn);
 
             try {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     nameTextBox.Text = reader["Imie"].ToString();
                     surnameTextBox.Text = reader["Nazwisko"].ToString();
                     mailTextBox.Text = reader["Mail"].ToString();
@@ -114,17 +113,15 @@ namespace onlyDesktop2 {
             string localNumber = localNumberTextBox.Text;
 
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
-            SqlCommand command = new SqlCommand("update Klienci set Imie = '" + name + "', Nazwisko = '" + surname +"', Mail = '"+ mail + "' where ID_klienta = " + MainWindow.clientID, conn);
-            SqlCommand command2 = new SqlCommand("update Adresy set Miejscowosc = '"+ city+"',Kod_pocztowy='"+zipCode+"',Ulica='"+street+"',Nr_domu="+houseNumber+ " ,Nr_mieszkania="+localNumber, conn);
-            try
-            {
+            SqlCommand command = new SqlCommand("update Klienci set Imie = '" + name + "', Nazwisko = '" + surname + "', Mail = '" + mail + "' where ID_klienta = " + MainWindow.clientID, conn);
+            SqlCommand command2 = new SqlCommand("update Adresy set Miejscowosc = '" + city + "',Kod_pocztowy='" + zipCode + "',Ulica='" + street + "',Nr_domu=" + houseNumber + " ,Nr_mieszkania=" + localNumber, conn);
+            try {
                 conn.Open();
                 command.ExecuteNonQuery();
                 command2.ExecuteNonQuery();
             }
-            catch (SqlException)
-            {
-              
+            catch (SqlException) {
+
             }
 
 
@@ -158,6 +155,32 @@ namespace onlyDesktop2 {
             localNumberTextBox.IsEnabled = enable;
         }
 
+        private void editPasswordButton_Click(object sender, RoutedEventArgs e) {
+            passwordTextBox.Visibility = Visibility.Visible;
+            passwordTextBox.IsEnabled = true;
+            savePasswordButton.Visibility = Visibility.Visible;
+
+        }
+
+        private void savePasswordButton_Click(object sender, RoutedEventArgs e) {
+            string pass = passwordTextBox.Text;
+            SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+            SqlCommand command = new SqlCommand("update Klienci set Haslo = '" + pass + "' where ID_klienta = " + MainWindow.clientID, conn);
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException) {
+
+            }
+
+            passwordTextBox.Visibility = Visibility.Collapsed;
+            savePasswordButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            passwordTextBox.Text = "";
+        }
     }
 
 }
