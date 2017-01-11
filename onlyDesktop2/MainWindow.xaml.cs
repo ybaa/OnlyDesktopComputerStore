@@ -112,6 +112,7 @@ namespace onlyDesktop2 {
 
             LogIn logIn = new LogIn();
             logIn.Show();
+            
 
         }
 
