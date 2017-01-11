@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:onlyDesktop2"
         mc:Ignorable="d"
         Title="MainWindow" Height="709.517" Width="1120.318">
-  
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -82,6 +82,11 @@
         <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
+        <Button x:Name="editAmountOfProductButton" Visibility="Collapsed" Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="60,34,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="editAmountOfProductButton_Click"/>
+        
+        <Button x:Name="addNewProductButton" Visibility="Collapsed" Content="Dodaj nowy produkt" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="addNewProductButton_Click"/>
+        <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="24" Margin="110,70,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ilosc" VerticalAlignment="Top" Width="120"/>
+
 
     </Grid>
 </Window>

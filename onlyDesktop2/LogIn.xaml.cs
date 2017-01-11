@@ -23,15 +23,15 @@ namespace onlyDesktop2 {
             InitializeComponent();
         }
 
-        private void mailTextBox_GotFocus(object sender, RoutedEventArgs e){
+        private void mailTextBox_GotFocus(object sender, RoutedEventArgs e) {
             mailTextBox.Text = "";
         }
 
-        private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e){
+        private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e) {
             passwordTextBox.Text = "";
         }
 
-        private void logInButton_Click(object sender, RoutedEventArgs e){
+        private void logInButton_Click(object sender, RoutedEventArgs e) {
             string password = passwordTextBox.Text;
             string username = mailTextBox.Text;
             searchInDatabase(username, password);
@@ -42,48 +42,69 @@ namespace onlyDesktop2 {
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
 
             SqlCommand command = new SqlCommand("SELECT * FROM Klienci WHERE Mail = '" + username + "'", conn);
-            SqlCommand command2 = new SqlCommand("SELECT * FROM Pracownicy WHERE Mail = '" + username + "'"  , conn);
+            SqlCommand command2 = new SqlCommand("SELECT * FROM Pracownicy WHERE Mail = '" + username + "'", conn);
 
             int checkIfWorkerOrClientFound = 0;
             try {
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                
+
                 while (reader.Read()) {
                     string usernameRead = reader["Mail"].ToString();
                     if (usernameRead == username) {
                         string pass = reader["Haslo"].ToString();
-                        if (pass == password){
+                        if (pass == password) {
                             MainWindow.clientID = reader.GetInt32(0);
                             MainWindow.clientName = reader["Imie"].ToString();
                             User.user = Users.Client;
                             checkIfWorkerOrClientFound = 1;
                         }
-                    }
-                }
-
-                if (checkIfWorkerOrClientFound == 0){
-                    reader = command2.ExecuteReader();
-                    while (reader.Read()){
-                        string usernameRead = reader["Mail"].ToString();
-                        if (usernameRead == username){
-                            string pass = reader["Haslo"].ToString();
-                            if (pass == password){
-                                User.user = Users.Worker;
-                                checkIfWorkerOrClientFound = 1;                               
-                            }
+                        else {
+                            
+                            checkIfWorkerOrClientFound = 2;
                         }
                     }
                 }
+                if (checkIfWorkerOrClientFound == 0) {
+                    reader.Close();
+                    SqlDataReader reader2 = command2.ExecuteReader();
+
+                    while (reader2.Read()) {
+
+                        string usernameRead2 = reader2["Mail"].ToString();
+                        if (usernameRead2 == username) {
+                            string pass = reader2["Haslo"].ToString();
+                            if (pass == password)
+                            {
+                                MainWindow.clientID = reader2.GetInt32(0);
+                                MainWindow.clientName = reader2["Imie"].ToString();
+                                User.user = Users.Worker;
+                                checkIfWorkerOrClientFound = 1;
+
+                            }
+                            else
+                            {
+                                
+                                checkIfWorkerOrClientFound = 2;
+                            }
+                        }
+                    }
+                    reader2.Close();
+                }
+                
             }
             catch (SqlException) {
             }
 
-            if(checkIfWorkerOrClientFound == 0)
-            MessageBox.Show("Nie ma takiego użytkownika lub danie nieporpawne");
+            if (checkIfWorkerOrClientFound == 0)
+                MessageBox.Show("Nie ma takiego użytkownika lub danie nieporpawne");
+            else if (checkIfWorkerOrClientFound == 2)
+            {
+                MessageBox.Show("Hasło niepoprawne");
+            }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {            
 
         }
     }

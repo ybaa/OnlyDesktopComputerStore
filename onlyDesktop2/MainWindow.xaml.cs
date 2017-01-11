@@ -27,29 +27,34 @@ namespace onlyDesktop2 {
         public static string clientName;
         public int amountOfThingsInCart = 0;
 
+
         public MainWindow() {
             InitializeComponent();
-            User.user = Users.Watcher;
+            User.user = Users.Worker;
         }
 
         private void showAllProductsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "SELECT * FROM Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu");
+
         }
 
         private void printersButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'drukarka'");
+
         }
 
         private void laptopsButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'laptop'");
+
         }
 
         private void accesoriesButton_Click(object sender, RoutedEventArgs e) {
             showProducts(
                 "select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Typ_produktu LIKE 'akcesoria'");
+
         }
 
         private void monitorsButton_Click(object sender, RoutedEventArgs e) {
@@ -59,9 +64,11 @@ namespace onlyDesktop2 {
         }
 
         public void showProducts(String cmd) {
+            myListView.Items.Refresh();
             myListView.Items.Clear();
+            Products.products.Clear();
             ListViewItem lvl = new ListViewItem();
-            List<Products> products = new List<Products>();
+
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand(cmd, conn);
 
@@ -79,7 +86,8 @@ namespace onlyDesktop2 {
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
                     int piecesOfProduct = 1;
-                    products.Add(new Products() {
+
+                    Products.products.Add(new Products() {
                         ID = ID,
                         name = name,
                         type = type,
@@ -95,7 +103,7 @@ namespace onlyDesktop2 {
             catch (SqlException) {
             }
 
-            foreach (Products p in products) {
+            foreach (Products p in Products.products) {
                 myListView.Items.Add(p);
             }
         }
@@ -115,6 +123,16 @@ namespace onlyDesktop2 {
                 signUpButton.Visibility = Visibility.Collapsed;
                 helloLabel.Content += clientName;
                 helloLabel.Visibility = Visibility.Visible;
+            }
+            else if (User.user == Users.Worker) {
+                helloLabel.Content += clientName;
+                helloLabel.Visibility = Visibility.Visible;
+                editAmountOfProductButton.Visibility = Visibility.Visible;
+                addNewProductButton.Visibility = Visibility.Visible;
+                amountOfProductTextBox.Visibility = Visibility.Visible;
+                signInButton.Visibility = Visibility.Collapsed;
+                signUpButton.Visibility = Visibility.Collapsed;
+
             }
         }
 
@@ -168,10 +186,49 @@ namespace onlyDesktop2 {
             cart.Show();
         }
 
-        private void myAccountButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void myAccountButton_Click(object sender, RoutedEventArgs e) {
             MyAccount acc = new MyAccount();
             acc.Show();
+
+        }
+
+        private void editAmountOfProductButton_Click(object sender, RoutedEventArgs e) {
+            dynamic selectedItem = myListView.SelectedItem;
+            int IDOfSelectedProduct = selectedItem.ID;
+            int amount = int.Parse(amountOfProductTextBox.Text);
+
+            if (amount >= 0) {
+
+                SqlConnection conn =
+                    new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+                SqlCommand command =
+                    new SqlCommand(
+                        "update Stan_magazynu set Ilosc_produktu = " + amount + " where ID_produktu = " +
+                        IDOfSelectedProduct, conn);
+
+                try {
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Ilośc zostala zedytowana");
+
+                    Products p = new Products();
+                    p = selectedItem;
+                    p.amount = amount;
+                    myListView.SelectedItem = p;
+                    myListView.Items.Refresh();
+
+                }
+                catch (SqlException) {
+                }
+            }
+            else {
+                MessageBox.Show("Ujemna ilosc produktu nie jest mozliwa");
+            }
+        }
+
+        private void addNewProductButton_Click(object sender, RoutedEventArgs e) {
+            NewProduct n = new NewProduct();
+            n.Show();
         }
     }
 }

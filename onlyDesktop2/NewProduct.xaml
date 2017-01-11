@@ -1,0 +1,18 @@
+﻿<Window x:Class="onlyDesktop2.NewProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:onlyDesktop2"
+        mc:Ignorable="d"
+        Title="NewProduct" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="23" Margin="28,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="23" Margin="28,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="28,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="23" Margin="28,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="buypriceTextBox" HorizontalAlignment="Left" Height="23" Margin="28,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="saveButton" Content="dodaj" HorizontalAlignment="Left" Margin="50,175,0,0" VerticalAlignment="Top" Width="75" Click="saveButton_Click"/>
+
+    </Grid>
+</Window>

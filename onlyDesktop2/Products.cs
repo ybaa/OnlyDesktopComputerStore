@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace onlyDesktop2 {
     public class Products {
+       public static List<Products> products = new List<Products>();
+
         public int ID { get; set; }
         public string name { get; set; }
         public string type { get; set; }
