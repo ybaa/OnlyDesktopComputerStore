@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:onlyDesktop2"
         mc:Ignorable="d"
-        Title="Registration" Height="334.441" Width="648.036">
+        Title="Registration" Height="353.474" Width="648.036">
     <Grid Height="325" VerticalAlignment="Top">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,25 +13,26 @@
                 <GradientStop Color="#FFB98585" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="label" Content="Imie" HorizontalAlignment="Left" Margin="26,23,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Nazwisko" HorizontalAlignment="Left" Margin="26,66,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Mail" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Haslo" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="122,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="122,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="122,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="122,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label4" Content="Miejscowosc" HorizontalAlignment="Left" Margin="332,27,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label5" Content="kod" HorizontalAlignment="Left" Margin="332,66,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label6" Content="ulica" HorizontalAlignment="Left" Margin="332,105,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label7" Content="Nr DOmu" HorizontalAlignment="Left" Margin="332,152,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label8" Content="Nr mieszkania" HorizontalAlignment="Left" Margin="332,200,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="cityTextBox" HorizontalAlignment="Left" Height="23" Margin="457,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="zipCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="457,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="streetTextBox" HorizontalAlignment="Left" Height="23" Margin="457,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="homeNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="457,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="localNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="457,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Zarejestruj" HorizontalAlignment="Left" Margin="287,257,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-
+        <Image  Source="logo.png" Margin="-25,171,352,10"/>
+        <Label x:Name="label" Content="Imie" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label1" Content="Nazwisko" HorizontalAlignment="Left" Margin="40,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label2" Content="Mail" HorizontalAlignment="Left" Margin="40,130,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label3" Content="Haslo" HorizontalAlignment="Left" Margin="40,180,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="135,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="135,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="135,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="135,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label4" Content="Miejscowosc" HorizontalAlignment="Left" Margin="330,30,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label5" Content="Kod pocztowy" HorizontalAlignment="Left" Margin="330,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label6" Content="Ulica" HorizontalAlignment="Left" Margin="330,130,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label7" Content="Nr domu" HorizontalAlignment="Left" Margin="330,180,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label8" Content="Nr mieszkania" HorizontalAlignment="Left" Margin="330,230,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="cityTextBox" HorizontalAlignment="Left" Height="23" Margin="455,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="zipCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="455,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="streetTextBox" HorizontalAlignment="Left" Height="23" Margin="455,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="homeNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="455,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="localNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="455,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Zarejestruj" HorizontalAlignment="Center" FontSize="16" Foreground="Wheat" Background="#33686666" Click="button_Click" Margin="237,270,226,16" Width="177"/>
+        
     </Grid>
 </Window>

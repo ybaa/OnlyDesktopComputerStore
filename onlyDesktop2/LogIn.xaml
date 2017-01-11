@@ -13,11 +13,12 @@
                 <GradientStop Color="#FFB98585" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="99,84,0,0" TextWrapping="Wrap" Text="mail" VerticalAlignment="Top" Width="120" GotFocus="mailTextBox_GotFocus"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="99,138,0,0" TextWrapping="Wrap" Text="hasło" VerticalAlignment="Top" Width="120" GotFocus="passwordTextBox_GotFocus"/>
-        <Label x:Name="label" Content="mail" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="haslo" HorizontalAlignment="Left" Margin="34,134,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="logInButton" Content="Zaloguj" HorizontalAlignment="Left" Margin="99,198,0,0" VerticalAlignment="Top" Width="75" Click="logInButton_Click"/>
+        <Image Source="logo.png" Margin="19,0,108,127" />
+        <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="117,110,0,0" TextWrapping="Wrap" Text="mail" VerticalAlignment="Top" Width="120" GotFocus="mailTextBox_GotFocus"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="117,164,0,0" TextWrapping="Wrap" Text="hasło" VerticalAlignment="Top" Width="120" GotFocus="passwordTextBox_GotFocus"/>
+        <Label x:Name="label" Content="mail" HorizontalAlignment="Left" Margin="52,107,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label1" Content="haslo" HorizontalAlignment="Left" Margin="52,160,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button x:Name="logInButton" Content="Zaloguj" FontSize="16" Foreground="Wheat" Background="#33686666" Click="logInButton_Click" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Margin="5,20,5,30"/>
 
     </Grid>
 </Window>

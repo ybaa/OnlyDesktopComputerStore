@@ -30,7 +30,7 @@ namespace onlyDesktop2 {
 
         public MainWindow() {
             InitializeComponent();
-            User.user = Users.Worker;
+            User.user = Users.Watcher;
         }
 
         private void showAllProductsButton_Click(object sender, RoutedEventArgs e) {
@@ -229,6 +229,10 @@ namespace onlyDesktop2 {
         private void addNewProductButton_Click(object sender, RoutedEventArgs e) {
             NewProduct n = new NewProduct();
             n.Show();
+        }
+
+        private void amountOfProductTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            amountOfProductTextBox.Text = "";
         }
     }
 }

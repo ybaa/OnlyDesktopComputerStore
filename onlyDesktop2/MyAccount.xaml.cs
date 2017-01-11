@@ -142,6 +142,9 @@ namespace onlyDesktop2 {
             streetTextBox.Visibility = x;
             houseNumberTextBox.Visibility = x;
             localNumberTextBox.Visibility = x;
+            editDataButton.Visibility = x;
+            finishEditionButton.Visibility = x;
+            editPasswordButton.Visibility = x;
         }
 
         public void endableEditing(bool enable) {

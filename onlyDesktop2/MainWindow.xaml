@@ -38,7 +38,7 @@
         </StackPanel>
 
 
-        <Button x:Name="myAccountButton" Grid.Row="0" Grid.Column="4" Width="200" Height="25" Margin="0,0,0,0" HorizontalAlignment="Center" Content="Moje Konto" FontSize="16" Foreground= "Wheat" Background="#33686666" Visibility="Collapsed" Click="myAccountButton_Click"></Button>
+        <Button x:Name="myAccountButton" Grid.Row="0" Grid.Column="4" Width="200" Height="25" Margin="20,0,20,0" HorizontalAlignment="Center" Content="Moje Konto" FontSize="16" Foreground= "Wheat" Background="#33686666" Visibility="Collapsed" Click="myAccountButton_Click"></Button>
         <Button x:Name="cartButton" Visibility="Collapsed" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
@@ -72,20 +72,19 @@
                     <GridViewColumn Header="Nazwa" Width="150" DisplayMemberBinding="{Binding name}" />
                     <GridViewColumn Header="Typ" Width="70" DisplayMemberBinding="{Binding type}" />
                     <GridViewColumn Header="Cena" Width="70" DisplayMemberBinding="{Binding price}" />
-                    <GridViewColumn Header="W magazynie" Width="70" DisplayMemberBinding="{Binding amount}" />
+                    <GridViewColumn Header="W magazynie" Width="100" DisplayMemberBinding="{Binding amount}" />
                     <GridViewColumn Header="Opis" Width="350" DisplayMemberBinding="{Binding description}" />
 
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
+        <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="10,20,10,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
-        <Button x:Name="editAmountOfProductButton" Visibility="Collapsed" Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="60,34,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="editAmountOfProductButton_Click"/>
-        
-        <Button x:Name="addNewProductButton" Visibility="Collapsed" Content="Dodaj nowy produkt" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="addNewProductButton_Click"/>
-        <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="24" Margin="110,70,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ilosc" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="editAmountOfProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Zmień ilość produktu" FontSize="16" Foreground="Wheat" Background="#33686666" Click="editAmountOfProductButton_Click"/>
+        <Button x:Name="addNewProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,50,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Dodaj nowy produkt" FontSize="16" Foreground="Wheat" Background="#33686666" Click="addNewProductButton_Click"/>
+        <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed"  HorizontalAlignment="Left" Height="24" Margin="20,50,20,20" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="Wprowadz ilość" VerticalAlignment="Top" Width="120" GotFocus="amountOfProductTextBox_GotFocus"/>
 
 
     </Grid>

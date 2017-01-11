@@ -7,12 +7,19 @@
         mc:Ignorable="d"
         Title="NewProduct" Height="300" Width="300">
     <Grid>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="23" Margin="28,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="23" Margin="28,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="28,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="23" Margin="28,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="buypriceTextBox" HorizontalAlignment="Left" Height="23" Margin="28,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="saveButton" Content="dodaj" HorizontalAlignment="Left" Margin="50,175,0,0" VerticalAlignment="Top" Width="75" Click="saveButton_Click"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FFB98585" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="logo.png" Margin="17,0,17,48" />
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Center" Height="23" Margin="0,20,0,0" TextWrapping="Wrap" Text="Nazwa produktu" VerticalAlignment="Top" Width="120" GotFocus="nameTextBox_GotFocus"/>
+        <TextBox x:Name="typeTextBox" HorizontalAlignment="Center" Height="23" Margin="0,50,0,0" TextWrapping="Wrap" Text="typ produktu" VerticalAlignment="Top" Width="120" GotFocus="typeTextBox_GotFocus"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Center" Height="23" Margin="0,80,0,0" TextWrapping="Wrap" Text="opis produktu" VerticalAlignment="Top" Width="120" GotFocus="descriptionTextBox_GotFocus"/>
+        <TextBox x:Name="priceTextBox" HorizontalAlignment="Center" Height="23" Margin="0,110,0,0" TextWrapping="Wrap" Text="cena" VerticalAlignment="Top" Width="120" GotFocus="priceTextBox_GotFocus"/>
+        <TextBox x:Name="buypriceTextBox" HorizontalAlignment="Center" Height="23" Margin="0,140,0,0" TextWrapping="Wrap" Text="cena kupna" VerticalAlignment="Top" Width="120" GotFocus="buypriceTextBox_GotFocus"/>
+        <Button x:Name="saveButton" Content="dodaj" HorizontalAlignment="Center" Margin="86,200,86,0" VerticalAlignment="Top" FontSize="16" Foreground="Wheat" Background="#33686666" Width="120" Click="saveButton_Click"/>
 
     </Grid>
 </Window>

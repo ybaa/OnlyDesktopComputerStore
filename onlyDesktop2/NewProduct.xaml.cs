@@ -60,5 +60,25 @@ namespace onlyDesktop2 {
             this.Close();
 
         }
+
+        private void nameTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            nameTextBox.Text = "";
+        }
+
+        private void typeTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            typeTextBox.Text = "";
+        }
+
+        private void descriptionTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            descriptionTextBox.Text = "";
+        }
+
+        private void priceTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            priceTextBox.Text = "";
+        }
+
+        private void buypriceTextBox_GotFocus(object sender, RoutedEventArgs e) {
+            buypriceTextBox.Text = "";
+        }
     }
 }
