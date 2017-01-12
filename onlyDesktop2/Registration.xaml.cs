@@ -26,7 +26,7 @@ namespace onlyDesktop2 {
             string name = NameTextBox.Text;
             string surname = surnameTextBox.Text;
             string mail = mailTextBox.Text;
-            string password = passwordTextBox.Text;
+            string password = passwordTextBox.Password;
             string city = cityTextBox.Text;
             string zipCode = zipCodeTextBox.Text;
             string street = streetTextBox.Text;
@@ -44,10 +44,18 @@ namespace onlyDesktop2 {
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("INSERT INTO Klienci(Imie, Nazwisko, Mail, Haslo) VALUES('" + name + "','" +surname +"','" + mail + "','" + password +"');", conn);
 
-            SqlCommand command2 = new SqlCommand("INSERT INTO Adresy(Miejscowosc, Kod_pocztowy, Ulica, Nr_domu, Nr_mieszkania) VALUES('" + city + "','" + zipCode + "','" + street + "','" + homeNumber + "','" + localNumber + "');", conn);
+            SqlCommand command2 = new SqlCommand("INSERT INTO Adresy(Miejscowosc, Kod_pocztowy, Ulica, Nr_domu, Nr_mieszkania) VALUES('" + city + "','" + zipCode + "','" + street + "'," + homeNumber + "," + localNumber + ");", conn);
+            SqlCommand command3 = new SqlCommand("select IDENT_CURRENT('Adresy')", conn);
+            SqlCommand command4 = new SqlCommand("select IDENT_CURRENT('Klienci')", conn);
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
+                command2.ExecuteNonQuery();
+                int x = Convert.ToInt32(command3.ExecuteScalar());
+                int y = Convert.ToInt32(command4.ExecuteScalar());
+                SqlCommand command5 = new SqlCommand("Insert into Klienci_Adresy(ID_klienta, ID_Adresu) values(" + y + "," + x + ")", conn);
+                command5.ExecuteNonQuery();
+
                 MessageBox.Show("Twoje konto zostalo utowrzone");
             }
             catch (SqlException) {

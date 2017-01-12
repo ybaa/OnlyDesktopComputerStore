@@ -21,7 +21,7 @@
         <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="135,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="135,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="135,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="135,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="135,182,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label4" Content="Miejscowosc" HorizontalAlignment="Left" Margin="330,30,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="label5" Content="Kod pocztowy" HorizontalAlignment="Left" Margin="330,80,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="label6" Content="Ulica" HorizontalAlignment="Left" Margin="330,130,0,0" VerticalAlignment="Top" Foreground="White"/>

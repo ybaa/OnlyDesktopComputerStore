@@ -114,7 +114,7 @@ namespace onlyDesktop2 {
 
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("update Klienci set Imie = '" + name + "', Nazwisko = '" + surname + "', Mail = '" + mail + "' where ID_klienta = " + MainWindow.clientID, conn);
-            SqlCommand command2 = new SqlCommand("update Adresy set Miejscowosc = '" + city + "',Kod_pocztowy='" + zipCode + "',Ulica='" + street + "',Nr_domu=" + houseNumber + " ,Nr_mieszkania=" + localNumber, conn);
+            SqlCommand command2 = new SqlCommand("update Adresy set Miejscowosc = '" + city + "',Kod_pocztowy='" + zipCode + "',Ulica='" + street + "',Nr_domu=" + houseNumber + " ,Nr_mieszkania=" + localNumber + " from Adresy full outer join Klienci_Adresy on Adresy.ID_Adresu = Klienci_Adresy.ID_Adresu where Klienci_Adresy.ID_klienta = " +MainWindow.clientID, conn);
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -172,7 +172,7 @@ namespace onlyDesktop2 {
         }
 
         private void savePasswordButton_Click(object sender, RoutedEventArgs e) {
-            string pass = passwordTextBox.Text;
+            string pass = passwordTextBox.Password;
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("update Klienci set Haslo = '" + pass + "' where ID_klienta = " + MainWindow.clientID, conn);
             try {
@@ -187,10 +187,7 @@ namespace onlyDesktop2 {
             savePasswordButton.Visibility = Visibility.Collapsed;
         }
 
-        private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e) {
-            passwordTextBox.Text = "";
-        }
-
+       
         private void transferDataButton_Click(object sender, RoutedEventArgs e) {
             MessageBox.Show("dupa_");
             dynamic selectedItem = myListView.SelectedItem;

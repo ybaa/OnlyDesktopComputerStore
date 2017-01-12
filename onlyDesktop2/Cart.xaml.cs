@@ -89,7 +89,9 @@ namespace onlyDesktop2 {
 
             MessageBox.Show("Twoje zamowienie zostało złożone, w celu dokonania zapłaty przejdź do zamówień");
             for (int i = 0; i < Order.giveMeProduct().Count; i++) {
+                MessageBox.Show(pricee.ToString());
                 addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee );
+                MessageBox.Show(pricee.ToString());
             }
 
         }
@@ -139,7 +141,7 @@ namespace onlyDesktop2 {
                                                             "values('" + thisDay + "'," + "'zlozono',"+ Order.giveMeProduct()[i][1] +","+ priceX +","+discount+","+worker+","+MainWindow.clientID+","+addressID+","+ x+ "," + Order.giveMeProduct()[i][0] + ")", conn);
                     commandHelp.ExecuteNonQuery();
                 }
-                MessageBox.Show(thisDay.ToString());
+                //MessageBox.Show(thisDay.ToString());
             }
             catch (SqlException) {
             }

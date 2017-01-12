@@ -27,12 +27,11 @@ namespace onlyDesktop2 {
             mailTextBox.Text = "";
         }
 
-        private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e) {
-            passwordTextBox.Text = "";
-        }
+
 
         private void logInButton_Click(object sender, RoutedEventArgs e) {
-            string password = passwordTextBox.Text;
+            
+            string password = passwordTextBox.Password;
             string username = mailTextBox.Text;
             searchInDatabase(username, password);
             this.Close();

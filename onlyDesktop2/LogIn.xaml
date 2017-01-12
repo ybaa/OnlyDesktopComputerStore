@@ -15,7 +15,7 @@
         </Grid.Background>
         <Image Source="logo.png" Margin="19,0,108,127" />
         <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="23" Margin="117,110,0,0" TextWrapping="Wrap" Text="mail" VerticalAlignment="Top" Width="120" GotFocus="mailTextBox_GotFocus"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="117,164,0,0" TextWrapping="Wrap" Text="hasło" VerticalAlignment="Top" Width="120" GotFocus="passwordTextBox_GotFocus"/>
+        <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="117,164,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="mail" HorizontalAlignment="Left" Margin="52,107,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="label1" Content="haslo" HorizontalAlignment="Left" Margin="52,160,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="logInButton" Content="Zaloguj" FontSize="16" Foreground="Wheat" Background="#33686666" Click="logInButton_Click" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Margin="5,20,5,30"/>
