@@ -124,6 +124,7 @@ namespace onlyDesktop2 {
                 signUpButton.Visibility = Visibility.Collapsed;
                 helloLabel.Content += clientName;
                 helloLabel.Visibility = Visibility.Visible;
+                logOutButton.Visibility = Visibility.Visible;
             }
             else if (User.user == Users.Worker) {
                 helloLabel.Content += clientName;
@@ -134,7 +135,19 @@ namespace onlyDesktop2 {
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
                 checkComplaintsButton.Visibility = Visibility.Visible;
-
+                logOutButton.Visibility = Visibility.Visible;
+            }
+            else if(User.user == Users.Watcher) {
+                cartButton.Visibility = Visibility.Collapsed;
+                myAccountButton.Visibility = Visibility.Collapsed;
+                signInButton.Visibility = Visibility.Visible;
+                signUpButton.Visibility = Visibility.Visible;
+                helloLabel.Visibility = Visibility.Collapsed;
+                logOutButton.Visibility = Visibility.Collapsed;
+                editAmountOfProductButton.Visibility = Visibility.Collapsed;
+                addNewProductButton.Visibility = Visibility.Collapsed;
+                amountOfProductTextBox.Visibility = Visibility.Collapsed;
+                checkComplaintsButton.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -277,6 +290,10 @@ namespace onlyDesktop2 {
         private void searchButton_Click(object sender, RoutedEventArgs e) {
             string phraseToFind = searchTextBox.Text;
             showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Nazwa_produktu like '%" + phraseToFind + "%'");
+        }
+
+        private void logOutButton_Click(object sender, RoutedEventArgs e) {
+            User.user = Users.Watcher;
         }
     }
 }

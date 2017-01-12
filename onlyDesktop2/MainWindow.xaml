@@ -40,7 +40,7 @@
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
             <Button x:Name="signInButton" Margin="20,0,0,0" HorizontalAlignment="Right" Content="Logowanie" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="signInButton_Click"></Button>
         </StackPanel>
-
+        <Button x:Name="logOutButton" Visibility="Collapsed" Grid.Column="4" Grid.Row="0" Margin="20,0,20,0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Content="Wyloguj" FontSize="16" Foreground= "Wheat" Background="#33686666" Click="logOutButton_Click" ></Button>   
 
         <Button x:Name="myAccountButton" Grid.Row="0" Grid.Column="4" Width="200" Height="25" Margin="20,0,20,0" HorizontalAlignment="Center" Content="Moje Konto" FontSize="16" Foreground= "Wheat" Background="#33686666" Visibility="Collapsed" Click="myAccountButton_Click"></Button>
         <Button x:Name="cartButton" Visibility="Collapsed" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,100,20,30"  Foreground="Wheat" Background="#FF3E663E" Click="ButtonCart_Click">
@@ -48,8 +48,8 @@
                 <Image x:Name="cartImg" Source="cart.png" HorizontalAlignment="Left" Height="30"></Image>
                 <TextBlock x:Name="cartTextBox" Text="Koszyk " HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
-
         </Button>
+        
         <Button x:Name="printersButton" Grid.Row="1" Grid.Column="0" Content="Drukarki" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="printersButton_Click" ></Button>
         <Button x:Name="laptopsButton" Grid.Row="1" Grid.Column="1" Content="Laptopy" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="laptopsButton_Click" ></Button>
         <Button x:Name="accesoriesButton" Grid.Row="1" Grid.Column="2" Content="Akcesoria" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="accesoriesButton_Click" ></Button>
