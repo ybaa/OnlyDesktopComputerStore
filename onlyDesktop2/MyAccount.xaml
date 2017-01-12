@@ -39,6 +39,7 @@
         </ListView>
         <Button x:Name="myDataButton" Grid.Row="0" Grid.Column="2" Content="Moje Dane" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="myDataButton_Click"  ></Button>
         <Button x:Name="myOrdersButton" Grid.Row="0" Grid.Column="3" Content="Moje Zamówienia" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="myOrdersButton_Click" ></Button>
+        <Button x:Name="complaintButton" Grid.Row="0" Grid.Column="4" Content="Złóż reklamacje" Foreground="Wheat" Background="#339E4343" FontSize="20" Margin="20,20,20,20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="complaintButton_Click"  ></Button>
         <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Stretch" Height="24" Margin="20,80,20,0" Grid.Row="1" TextWrapping="Wrap" Text="Imie" VerticalAlignment="Top"  Grid.Column="1" IsEnabled="False"/>
         <TextBox x:Name="surnameTextBox" HorizontalAlignment="Stretch" Height="22" Margin="20,130,20,0" Grid.Row="1" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top"  Grid.Column="1" IsEnabled="False"/>
@@ -54,8 +55,8 @@
         <TextBox x:Name="passwordTextBox" GotFocus="passwordTextBox_GotFocus" Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="20,80,20,0" Grid.Row="1" TextWrapping="Wrap" Text="*********" VerticalAlignment="Top"  IsEnabled="False" Visibility="Collapsed" />
         <Button x:Name="savePasswordButton" Content="Zapisz zamine" Grid.Column="3" FontSize="16" Foreground="Wheat" Background="#33686666" Margin="20,130,20,0" Grid.Row="1" VerticalAlignment="Top"  Visibility="Collapsed" Click="savePasswordButton_Click"/>
         <Button x:Name="transferDataButton" Content="Dane do przelewu" Grid.Column="3" HorizontalAlignment="Stretch" Margin="20,30,20,0" Grid.Row="2" VerticalAlignment="Top" FontSize="16" Foreground="Wheat" Background="#33686666" Visibility="Collapsed" Click="transferDataButton_Click"/>
-
-
+        <TextBox x:Name="complaintTextBox" Grid.Column="4" HorizontalAlignment="Stretch" Height="230" Margin="20,80,20,0" Grid.Row="1" TextWrapping="Wrap" Text="Tutaj opisz problem" VerticalAlignment="Top" IsEnabled="False"/>
+        <Button x:Name="saveComplaintButton" Content="Wyslij reklamacje" Grid.Column="4" HorizontalAlignment="Stretch" Margin="20,30,20,0" Grid.Row="2" VerticalAlignment="Top" FontSize="16" Foreground="Wheat" Background="#33686666" Visibility="Collapsed" Click="saveComplaintButton_Click" />
 
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -202,6 +202,44 @@ namespace onlyDesktop2 {
             MessageBox.Show("Proszę wykonac przelew na numer konta:\n 101010230000261395100000252183\n" +
                  "Cena: " + price.ToString() + "\nJako tytuł przelewu proszę wpisać " + "'" + IDOfSelectedProduct.ToString() + "'");
         }
+
+        private void complaintButton_Click(object sender, RoutedEventArgs e) {
+            complaintTextBox.IsEnabled = true;
+            saveComplaintButton.Visibility = Visibility.Visible;
+            
+
+        }
+
+        private void saveComplaintButton_Click(object sender, RoutedEventArgs e) {          
+            string complaint = complaintTextBox.Text;
+            saveComplaintButton.Visibility = Visibility.Collapsed;
+            DateTime thisDay = DateTime.Today;
+
+            SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+            SqlCommand command2 = new SqlCommand("select ID_Adresu from Klienci, Klienci_Adresy where Klienci.ID_klienta = Klienci_Adresy.ID_klienta and Klienci.ID_klienta = " + MainWindow.clientID, conn);
+            SqlCommand command3 = new SqlCommand("select COUNT(*) from Pracownicy ", conn);
+
+            try {
+                conn.Open();
+                int addressID = Convert.ToInt32(command2.ExecuteScalar());
+                int numberOfWorkers = Convert.ToInt32(command3.ExecuteScalar());
+                Random rand = new Random();
+                int worker = rand.Next(1, numberOfWorkers);
+                //string komenda = "insert into Reklamacje(Status, Data_zgloszenia, Opis_problemu, ID_Adresu, ID_Pracownika, ID_klienta) values('nierozpatrzona', '" + thisDay + "', '" + complaint + "', " + addressID + ", " + worker + ", " + MainWindow.clientID + ")";
+                //MessageBox.Show(komenda);
+                
+
+                SqlCommand command = new SqlCommand("insert into Reklamacje(Status, Data_zgloszenia, Opis_problemu,ID_Adresu,ID_Pracownika,ID_klienta) values('nierozpatrzona','" + thisDay + "','" + complaint + "'," + addressID + "," + worker + "," + MainWindow.clientID + ")" , conn);
+                command.ExecuteNonQuery();
+                complaintTextBox.IsEnabled = false;
+                complaintTextBox.Text = "Reklamacja została wysłana";
+                saveComplaintButton.Visibility = Visibility.Collapsed;
+
+            }
+            catch (SqlException) {
+
+            }
+        }
     }
 
 }
