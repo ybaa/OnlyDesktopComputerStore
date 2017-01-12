@@ -29,8 +29,12 @@
         </Grid.ColumnDefinitions>
 
         <Image x:Name="logoImg" Grid.Row="0" Grid.Column="0" Source="logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" ></Image>
-        <TextBox x:Name="searchTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="60,60,120,60" ></TextBox>
-        <Image x:Name="loupeImg" Grid.Row="0" Grid.Column="3" Source="loupe.jpg" Margin="60"></Image>
+        <TextBox x:Name="searchTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="60,60,120,60" FontFamily="Calibri" FontSize="22"  ></TextBox>
+        <Button x:Name="searchButton" Grid.Row="0" Grid.Column="3" Margin="60" Width="35" Click="searchButton_Click">
+            <StackPanel>
+        <Image Source="loupe.jpg" Width="35" ></Image>
+            </StackPanel>
+            </Button>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,30,0,20">
             <Button x:Name="signUpButton" Margin="0,0,0,0" HorizontalAlignment="Left" Content="Rejestracja" FontSize="16" Foreground="Wheat" Background="#33686666" Click="signUpButton_Click"></Button>
@@ -82,9 +86,10 @@
         <Button x:Name="addToCartButton" Grid.Row="3" Grid.Column="2" Content="Dodaj do koszyka" Foreground="Wheat" Background="#339E4343" FontSize="24" Margin="10,20,10,20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="addToCartButton_Click" ></Button>
         <Button x:Name="help" Content="tymczasowy" Grid.Row="3" Grid.Column="4" Margin="20,30,20,30" Click="help_Click"/>
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
-        <Button x:Name="editAmountOfProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Zmień ilość produktu" FontSize="16" Foreground="Wheat" Background="#33686666" Click="editAmountOfProductButton_Click"/>
-        <Button x:Name="addNewProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,50,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Dodaj nowy produkt" FontSize="16" Foreground="Wheat" Background="#33686666" Click="addNewProductButton_Click"/>
+        <Button x:Name="editAmountOfProductButton" Grid.Row="3" Grid.Column="1" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Zmień ilość produktu" FontSize="16" Foreground="Wheat" Background="#33686666" Click="editAmountOfProductButton_Click"/>
+        <Button x:Name="addNewProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"  Margin="20,50,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Dodaj nowy produkt" FontSize="16" Foreground="Wheat" Background="#33686666" Click="addNewProductButton_Click"/>
         <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed"  HorizontalAlignment="Left" Height="24" Margin="20,50,20,20" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="Wprowadz ilość" VerticalAlignment="Top" Width="120" GotFocus="amountOfProductTextBox_GotFocus"/>
+        <Button x:Name="checkComplaintsButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Sprawdz reklamacje" FontSize="16" Foreground="Wheat" Background="#33686666" Click="checkComplaintsButton_Click" />
 
 
     </Grid>

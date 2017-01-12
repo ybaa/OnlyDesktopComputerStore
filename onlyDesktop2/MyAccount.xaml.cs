@@ -225,9 +225,6 @@ namespace onlyDesktop2 {
                 int numberOfWorkers = Convert.ToInt32(command3.ExecuteScalar());
                 Random rand = new Random();
                 int worker = rand.Next(1, numberOfWorkers);
-                //string komenda = "insert into Reklamacje(Status, Data_zgloszenia, Opis_problemu, ID_Adresu, ID_Pracownika, ID_klienta) values('nierozpatrzona', '" + thisDay + "', '" + complaint + "', " + addressID + ", " + worker + ", " + MainWindow.clientID + ")";
-                //MessageBox.Show(komenda);
-                
 
                 SqlCommand command = new SqlCommand("insert into Reklamacje(Status, Data_zgloszenia, Opis_problemu,ID_Adresu,ID_Pracownika,ID_klienta) values('nierozpatrzona','" + thisDay + "','" + complaint + "'," + addressID + "," + worker + "," + MainWindow.clientID + ")" , conn);
                 command.ExecuteNonQuery();

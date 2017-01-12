@@ -58,6 +58,10 @@
     <Compile Include="Cart.xaml.cs">
       <DependentUpon>Cart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Complaint.cs" />
+    <Compile Include="ComplaintsWindow.xaml.cs">
+      <DependentUpon>ComplaintsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyAccount.xaml.cs">
       <DependentUpon>MyAccount.xaml</DependentUpon>
     </Compile>
@@ -71,6 +75,10 @@
     </Compile>
     <Compile Include="User.cs" />
     <Page Include="Cart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComplaintsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

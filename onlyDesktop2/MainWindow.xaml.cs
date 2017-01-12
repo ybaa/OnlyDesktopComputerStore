@@ -112,7 +112,7 @@ namespace onlyDesktop2 {
 
             LogIn logIn = new LogIn();
             logIn.Show();
-            
+
 
         }
 
@@ -133,6 +133,7 @@ namespace onlyDesktop2 {
                 amountOfProductTextBox.Visibility = Visibility.Visible;
                 signInButton.Visibility = Visibility.Collapsed;
                 signUpButton.Visibility = Visibility.Collapsed;
+                checkComplaintsButton.Visibility = Visibility.Visible;
 
             }
         }
@@ -234,6 +235,48 @@ namespace onlyDesktop2 {
 
         private void amountOfProductTextBox_GotFocus(object sender, RoutedEventArgs e) {
             amountOfProductTextBox.Text = "";
+        }
+
+        private void checkComplaintsButton_Click(object sender, RoutedEventArgs e) {
+            Complaint.complaints.Clear();
+            SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+
+            SqlCommand command = new SqlCommand("select * from Reklamacje order by ID_pracownika", conn);
+            try {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    int ID = reader.GetInt32(0);
+                    string status = reader["Status"].ToString();
+                    string date = reader["Data_zgloszenia"].ToString();
+                    string description = reader["Opis_problemu"].ToString();
+                    int addressID = reader.GetInt32(4);
+                    int workerID = reader.GetInt32(5);
+                    int clientID = reader.GetInt32(6);
+
+                    Complaint.complaints.Add(new Complaint() {
+                        ID = ID,
+                        status = status,
+                        date = date,
+                        description = description,
+                        addressID = addressID,
+                        workerID = workerID,
+                        clinetID = clientID
+                    });
+                }
+                ComplaintsWindow cw = new ComplaintsWindow();
+                cw.Show();
+
+            }
+            catch (SqlException) {
+
+            }
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e) {
+            string phraseToFind = searchTextBox.Text;
+            showProducts("select * from Produkty FULL OUTER JOIN Stan_magazynu ON Produkty.ID_produktu = Stan_magazynu.ID_produktu WHERE Nazwa_produktu like '%" + phraseToFind + "%'");
         }
     }
 }
