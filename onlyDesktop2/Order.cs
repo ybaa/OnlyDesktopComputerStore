@@ -7,13 +7,13 @@ using System.Windows.Documents;
 
 namespace onlyDesktop2 {
     class Order {
- 
+
         //private static List<int> productID = new List<int>();
 
         private static List<List<int>> product = new List<List<int>>();
         private static List<decimal> prices = new List<decimal>();
 
-        public static void addProduct(int p,int i, decimal d) {
+        public static void addProduct(int p, int i, decimal d) {
             List<int> IDAndAmount = new List<int>();
             IDAndAmount.Add(p);
             IDAndAmount.Add(i);
@@ -21,12 +21,9 @@ namespace onlyDesktop2 {
             product.Add(IDAndAmount);
         }
 
-        public static void removeProduct(int id)
-        {
-            for (int i = 0; i < product.Count(); i++)
-            {
-                if (product[i][0] == id)
-                {
+        public static void removeProduct(int id) {
+            for (int i = 0; i < product.Count(); i++) {
+                if (product[i][0] == id) {
                     product.RemoveAt(i);
                 }
             }
@@ -54,11 +51,35 @@ namespace onlyDesktop2 {
             return ret;
         }
 
-        public static decimal getPrice(int i)
-        {
+        public static decimal getPrice(int i) {
             decimal price;
             price = prices[i] * product[i][1];
             return price;
+        }
+
+        public static decimal getPriceByID(int id) {
+            int help=0;
+            for (int i = 0; i < product.Count; i++) {
+                if (product[i][0] == id) {
+                    help = i;
+                }
+            }
+
+            decimal price;
+            price = prices[help] * product[help][1];
+            return price;
+        }
+
+        public static int updatePrice(int id, decimal price) {
+            int help = 0;
+            for (int i = 0; i < product.Count; i++) {
+                if (product[i][0] == id) {
+                    prices[i] = price;
+                    help = 1;
+                }
+            }
+            return help;
+           
         }
 
     }

@@ -145,6 +145,12 @@ namespace onlyDesktop2 {
             editDataButton.Visibility = x;
             finishEditionButton.Visibility = x;
             editPasswordButton.Visibility = x;
+            if (x == Visibility.Collapsed)
+                x = Visibility.Visible;
+            else
+                x = Visibility.Collapsed;
+
+            transferDataButton.Visibility = x;
         }
 
         public void endableEditing(bool enable) {
@@ -183,6 +189,18 @@ namespace onlyDesktop2 {
 
         private void passwordTextBox_GotFocus(object sender, RoutedEventArgs e) {
             passwordTextBox.Text = "";
+        }
+
+        private void transferDataButton_Click(object sender, RoutedEventArgs e) {
+            MessageBox.Show("dupa_");
+            dynamic selectedItem = myListView.SelectedItem;
+            int IDOfSelectedProduct = selectedItem.ID;
+            decimal price = selectedItem.price;
+
+            MessageBox.Show(price.ToString());
+
+            MessageBox.Show("Proszę wykonac przelew na numer konta:\n 101010230000261395100000252183\n" +
+                 "Cena: " + price.ToString() + "\nJako tytuł przelewu proszę wpisać " + "'" + IDOfSelectedProduct.ToString() + "'");
         }
     }
 

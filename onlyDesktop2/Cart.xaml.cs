@@ -61,7 +61,7 @@ namespace onlyDesktop2 {
                     string codeID = reader["ID_kodu"].ToString();
                     int amount = reader["Ilosc_produktu"] as int? ?? default(int);
                     int piecesOfProduct = Order.giveMeAmountOfProductsWithThisID(ID);
-                    totalPrice += price;
+                    totalPrice += Order.getPriceByID(ID);
 
                     products.Add(new Products() {
                         ID = ID,
@@ -147,7 +147,7 @@ namespace onlyDesktop2 {
 
 
         private void codeTextBlock_GotFocus(object sender, RoutedEventArgs e) {
-            codeTextBlock.Text = "";
+            codeTextBox.Text = "";
         }
 
         private void incrementAmountOfProductButton_Click(object sender, RoutedEventArgs e) {
@@ -195,6 +195,54 @@ namespace onlyDesktop2 {
                 totalPrice -= p.price;
                 summary.Text = totalPrice.ToString();
                 myListView.Items.Refresh();
+            }
+        }
+
+        private void discountCodButton_Click(object sender, RoutedEventArgs e) {
+            dynamic selectedItem = myListView.SelectedItem;
+            int IDOfSelectedProduct = selectedItem.ID;
+            string code = codeTextBox.Text;
+
+            SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
+            SqlCommand command = new SqlCommand("select Wielkosc_znizki from Kody_promocyjne full outer join Produkty  on Produkty.ID_Kodu = Kody_promocyjne.ID_kodu where Haslo_dostepu = '" + code + "' and Produkty.ID_produktu = " + IDOfSelectedProduct, conn);
+            
+
+            try {
+                conn.Open();
+                int discount = Convert.ToInt32(command.ExecuteScalar()) as int? ?? default(int);    //jak jest null to zwróci piękne 0
+
+                //for (int i = 0; i < Order.giveMeProduct().Count; i++) {
+                //    string priceX = Order.getPrice(i).ToString();
+                //    priceX = priceX.Replace(",", ".");
+
+                //}
+
+
+                double  price = Convert.ToDouble( Order.getPriceByID(IDOfSelectedProduct));
+                double oldPrice = price;
+                price = price * (1 - discount*0.01);
+                string priceS = price.ToString();
+                priceS = priceS.Replace(",", ".");
+                MessageBox.Show(priceS);
+
+                //Order.updatePrice(IDOfSelectedProduct, Convert.ToDecimal(price));
+                MessageBox.Show(Order.updatePrice(IDOfSelectedProduct, Convert.ToDecimal(price)).ToString());
+
+                oldPrice = oldPrice - price;
+
+                decimal totalPrice = decimal.Parse(summary.Text);
+                totalPrice -= Convert.ToDecimal(oldPrice);
+                
+                summary.Text = totalPrice.ToString();
+
+
+                myListView.Items.Refresh();
+
+
+            }
+            catch (SqlException) {
+
+                
             }
         }
     }
