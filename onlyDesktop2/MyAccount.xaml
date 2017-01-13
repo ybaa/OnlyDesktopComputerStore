@@ -32,7 +32,7 @@
                 <GridView>
                     <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Nazwa" Width="170" DisplayMemberBinding="{Binding orderDate}"/>
-                    <GridViewColumn Header="Typ" Width="120"  DisplayMemberBinding="{Binding status}"/>
+                    <GridViewColumn Header="Status" Width="120"  DisplayMemberBinding="{Binding status}"/>
                     <GridViewColumn Header="Cena" Width="150" DisplayMemberBinding="{Binding price}"/>
                 </GridView>
             </ListView.View>
@@ -55,7 +55,7 @@
         <PasswordBox x:Name="passwordTextBox"  Grid.Column="3" HorizontalAlignment="Stretch" Height="23" Margin="20,80,20,0" Grid.Row="1"  VerticalAlignment="Top"  IsEnabled="False" Visibility="Collapsed" />
         <Button x:Name="savePasswordButton" Content="Zapisz zamine" Grid.Column="3" FontSize="16" Foreground="Wheat" Background="#33686666" Margin="20,130,20,0" Grid.Row="1" VerticalAlignment="Top"  Visibility="Collapsed" Click="savePasswordButton_Click"/>
         <Button x:Name="transferDataButton" Content="Dane do przelewu" Grid.Column="3" HorizontalAlignment="Stretch" Margin="20,30,20,0" Grid.Row="2" VerticalAlignment="Top" FontSize="16" Foreground="Wheat" Background="#33686666" Visibility="Collapsed" Click="transferDataButton_Click"/>
-        <TextBox x:Name="complaintTextBox" Grid.Column="4" HorizontalAlignment="Stretch" Height="230" Margin="20,80,20,0" Grid.Row="1" TextWrapping="Wrap" Text="Tutaj opisz problem" VerticalAlignment="Top" IsEnabled="False"/>
+        <TextBox x:Name="complaintTextBox" Grid.Column="4" HorizontalAlignment="Stretch" Height="230" Margin="20,80,20,0" Grid.Row="1" TextWrapping="Wrap" Text="Tutaj opisz problem" VerticalAlignment="Top" IsEnabled="False" Visibility="Collapsed"/>
         <Button x:Name="saveComplaintButton" Content="Wyslij reklamacje" Grid.Column="4" HorizontalAlignment="Stretch" Margin="20,30,20,0" Grid.Row="2" VerticalAlignment="Top" FontSize="16" Foreground="Wheat" Background="#33686666" Visibility="Collapsed" Click="saveComplaintButton_Click" />
 
         <Grid.Background>

@@ -118,37 +118,24 @@ namespace onlyDesktop2 {
 
         private void help_Click(object sender, RoutedEventArgs e) {
             if (User.user == Users.Client) {
-                cartButton.Visibility = Visibility.Visible;
                 myAccountButton.Visibility = Visibility.Visible;
-                signInButton.Visibility = Visibility.Collapsed;
-                signUpButton.Visibility = Visibility.Collapsed;
-                helloLabel.Content += clientName;
-                helloLabel.Visibility = Visibility.Visible;
-                logOutButton.Visibility = Visibility.Visible;
+                cartButton.Visibility = Visibility.Visible;            
+
             }
             else if (User.user == Users.Worker) {
-                helloLabel.Content += clientName;
-                helloLabel.Visibility = Visibility.Visible;
                 editAmountOfProductButton.Visibility = Visibility.Visible;
                 addNewProductButton.Visibility = Visibility.Visible;
                 amountOfProductTextBox.Visibility = Visibility.Visible;
-                signInButton.Visibility = Visibility.Collapsed;
-                signUpButton.Visibility = Visibility.Collapsed;
                 checkComplaintsButton.Visibility = Visibility.Visible;
-                logOutButton.Visibility = Visibility.Visible;
+
             }
-            else if(User.user == Users.Watcher) {
-                cartButton.Visibility = Visibility.Collapsed;
-                myAccountButton.Visibility = Visibility.Collapsed;
-                signInButton.Visibility = Visibility.Visible;
-                signUpButton.Visibility = Visibility.Visible;
-                helloLabel.Visibility = Visibility.Collapsed;
-                logOutButton.Visibility = Visibility.Collapsed;
-                editAmountOfProductButton.Visibility = Visibility.Collapsed;
-                addNewProductButton.Visibility = Visibility.Collapsed;
-                amountOfProductTextBox.Visibility = Visibility.Collapsed;
-                checkComplaintsButton.Visibility = Visibility.Collapsed;
-            }
+            helloLabel.Content = "Witaj ";
+            helloLabel.Content += clientName;
+            helloLabel.Visibility = Visibility.Visible;
+            logOutButton.Visibility = Visibility.Visible;
+            signInButton.Visibility = Visibility.Collapsed;
+            signUpButton.Visibility = Visibility.Collapsed;
+
         }
 
         private void signUpButton_Click(object sender, RoutedEventArgs e) {
@@ -294,6 +281,16 @@ namespace onlyDesktop2 {
 
         private void logOutButton_Click(object sender, RoutedEventArgs e) {
             User.user = Users.Watcher;
+            cartButton.Visibility = Visibility.Collapsed;
+            myAccountButton.Visibility = Visibility.Collapsed;
+            signInButton.Visibility = Visibility.Visible;
+            signUpButton.Visibility = Visibility.Visible;
+            helloLabel.Visibility = Visibility.Collapsed;
+            logOutButton.Visibility = Visibility.Collapsed;
+            editAmountOfProductButton.Visibility = Visibility.Collapsed;
+            addNewProductButton.Visibility = Visibility.Collapsed;
+            amountOfProductTextBox.Visibility = Visibility.Collapsed;
+            checkComplaintsButton.Visibility = Visibility.Collapsed;
         }
     }
 }

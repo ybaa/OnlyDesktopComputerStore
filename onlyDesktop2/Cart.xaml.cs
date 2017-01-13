@@ -82,23 +82,23 @@ namespace onlyDesktop2 {
             return totalPrice;
         }
 
-        private void pay_Click(object sender, RoutedEventArgs e)
-        {
+        private void pay_Click(object sender, RoutedEventArgs e) {
             decimal pricee = decimal.Parse(summary.Text);
 
 
             MessageBox.Show("Twoje zamowienie zostało złożone, w celu dokonania zapłaty przejdź do zamówień");
             for (int i = 0; i < Order.giveMeProduct().Count; i++) {
                 MessageBox.Show(pricee.ToString());
-                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee );
+                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee);
                 MessageBox.Show(pricee.ToString());
             }
 
+            this.Close();
+
         }
 
-        private void addOrderToDatabase(int productID, int piecesOfProducts, decimal price)
-        {
-            
+        private void addOrderToDatabase(int productID, int piecesOfProducts, decimal price) {
+
             int discount = 0;
             decimal deliveryPrice = 0;
             if (price < 100)
@@ -108,37 +108,37 @@ namespace onlyDesktop2 {
             priceString = priceString.Replace(",", ".");
             string deliveryPriceString = deliveryPrice.ToString();
             deliveryPriceString = deliveryPriceString.Replace(",", ".");
-            
+
 
 
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("update Stan_magazynu set Ilosc_produktu = Ilosc_produktu - " + piecesOfProducts + " where ID_produktu = " + productID, conn);
-            SqlCommand command2 = new SqlCommand("insert into paki(Cena_przesylki, Cena_calkowita) Values(" +deliveryPriceString + ", " + priceString +")" , conn);
-            SqlCommand command3 = new SqlCommand("select IDENT_CURRENT('Zamowienia')", conn);
+            SqlCommand command2 = new SqlCommand("insert into paki(Cena_przesylki, Cena_calkowita) Values(" + deliveryPriceString + ", " + priceString + ")", conn);
+            SqlCommand command3 = new SqlCommand("select IDENT_CURRENT('paki')", conn);
             SqlCommand command4 = new SqlCommand("select COUNT(*) from Pracownicy ", conn);
             SqlCommand command5 = new SqlCommand("select Adresy.ID_Adresu from Adresy full outer join Klienci_Adresy on Adresy.ID_Adresu = Klienci_Adresy.ID_Adresu full outer join Klienci on Klienci.ID_klienta = Klienci_Adresy.ID_klienta where Klienci.ID_klienta = " + MainWindow.clientID, conn);
             try {
-               
+
                 conn.Open();
-                command.ExecuteNonQuery();                
+                command.ExecuteNonQuery();
                 command2.ExecuteNonQuery();
-                
+
                 int x = Convert.ToInt32(command3.ExecuteScalar());
 
                 int numberOfWorkers = Convert.ToInt32(command4.ExecuteScalar());
-                
+
                 Random rand = new Random();
-                int worker = rand.Next(1,numberOfWorkers);
+                int worker = rand.Next(1, numberOfWorkers);
 
                 int addressID = Convert.ToInt32(command5.ExecuteScalar());
 
                 DateTime thisDay = DateTime.Today;
-                for (int i = 0; i < Order.giveMeProduct().Count; i++)
-                {
+                for (int i = 0; i < Order.giveMeProduct().Count; i++) {
                     string priceX = Order.getPrice(i).ToString();
                     priceX = priceX.Replace(",", ".");
-                    SqlCommand commandHelp = new SqlCommand("insert into Zamowienia(Data_zlozenia, Status_zamowienia,Ilosc_produktu,  Cena_produktu, Rabat,ID_Pracownika, ID_klienta, ID_Adresu, ID_paczki, ID_produktu) " +
-                                                            "values('" + thisDay + "'," + "'zlozono',"+ Order.giveMeProduct()[i][1] +","+ priceX +","+discount+","+worker+","+MainWindow.clientID+","+addressID+","+ x+ "," + Order.giveMeProduct()[i][0] + ")", conn);
+
+                SqlCommand commandHelp = new SqlCommand("insert into Zamowienia(Data_zlozenia, Status_zamowienia,Ilosc_produktu,  Cena_produktu, Rabat,ID_Pracownika, ID_klienta, ID_Adresu, ID_paczki, ID_produktu) " +
+                                                            "values (GETDATE()," + "'zlozono'," + Order.giveMeProduct()[i][1] + "," + priceX + "," + discount + "," + worker + "," + MainWindow.clientID + "," + addressID + "," + x + "," + Order.giveMeProduct()[i][0] + ")", conn);
                     commandHelp.ExecuteNonQuery();
                 }
                 //MessageBox.Show(thisDay.ToString());
@@ -207,7 +207,7 @@ namespace onlyDesktop2 {
 
             SqlConnection conn = new SqlConnection("Data Source=MARTYNA-PC;Initial Catalog=SklepKomputerowy;Integrated Security=True");
             SqlCommand command = new SqlCommand("select Wielkosc_znizki from Kody_promocyjne full outer join Produkty  on Produkty.ID_Kodu = Kody_promocyjne.ID_kodu where Haslo_dostepu = '" + code + "' and Produkty.ID_produktu = " + IDOfSelectedProduct, conn);
-            
+
 
             try {
                 conn.Open();
@@ -220,21 +220,17 @@ namespace onlyDesktop2 {
                 //}
 
 
-                double  price = Convert.ToDouble( Order.getPriceByID(IDOfSelectedProduct));
+                double price = Convert.ToDouble(Order.getPriceByID(IDOfSelectedProduct));
                 double oldPrice = price;
-                price = price * (1 - discount*0.01);
+                price = price * (1 - discount * 0.01);
                 string priceS = price.ToString();
                 priceS = priceS.Replace(",", ".");
-                MessageBox.Show(priceS);
-
-                //Order.updatePrice(IDOfSelectedProduct, Convert.ToDecimal(price));
-                MessageBox.Show(Order.updatePrice(IDOfSelectedProduct, Convert.ToDecimal(price)).ToString());
 
                 oldPrice = oldPrice - price;
 
                 decimal totalPrice = decimal.Parse(summary.Text);
                 totalPrice -= Convert.ToDecimal(oldPrice);
-                
+
                 summary.Text = totalPrice.ToString();
 
 
@@ -244,7 +240,7 @@ namespace onlyDesktop2 {
             }
             catch (SqlException) {
 
-                
+
             }
         }
     }

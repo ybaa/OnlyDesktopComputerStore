@@ -45,9 +45,6 @@ namespace onlyDesktop2 {
             catch (SqlException) {
             }
 
-
-
-
         }
 
         List<MyOrders> myOrders = new List<MyOrders>();
@@ -56,6 +53,8 @@ namespace onlyDesktop2 {
         private void myOrdersButton_Click(object sender, RoutedEventArgs e) {
             showOrHideMyData(Visibility.Collapsed);
             myListView.Visibility = Visibility.Visible;
+            complaintTextBox.Visibility = Visibility.Collapsed;
+            saveComplaintButton.Visibility = Visibility.Collapsed;
             showMyOrders(myOrders);
         }
 
@@ -67,19 +66,24 @@ namespace onlyDesktop2 {
                     "SELECT DISTINCT paki.ID_paczki, Zamowienia.Data_zlozenia, Zamowienia.Status_zamowienia, paki.Cena_calkowita   FROM Zamowienia FULL OUTER JOIN paki ON Zamowienia.ID_paczki = paki.ID_paczki full outer join Klienci on Klienci.ID_klienta = Zamowienia.ID_klienta   WHERE Klienci.ID_klienta = " +
                     MainWindow.clientID, conn);
 
+            SqlCommand command2 = new SqlCommand("SELECT COUNT(DISTINCT paki.ID_paczki) FROM Zamowienia FULL OUTER JOIN paki ON Zamowienia.ID_paczki = paki.ID_paczki full outer join Klienci on Klienci.ID_klienta = Zamowienia.ID_klienta   WHERE Klienci.ID_klienta = " + MainWindow.clientID, conn);
+
             try {
                 conn.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read()) {
-                    int ID = reader.GetInt32(0);
-                    string orderDate = reader["Data_zlozenia"].ToString();
-                    string status = reader["Status_zamowienia"].ToString();
-                    decimal price = reader.GetDecimal(3);
-
-                    myOrders.Add(new MyOrders() { ID = ID, orderDate = orderDate, status = status, price = price });
+                int x = Convert.ToInt32(command2.ExecuteScalar());
+                if(x == 0) {
                 }
-
+                else { 
+                SqlDataReader reader = command.ExecuteReader();               
+                while (reader.Read()) {
+                    MessageBox.Show("przed ID");
+                    int ID = reader.GetInt32(0);
+                        string orderDate = reader["Data_zlozenia"].ToString();
+                        string status = reader["Status_zamowienia"].ToString();
+                        decimal price = reader.GetDecimal(3);                        
+                        myOrders.Add(new MyOrders() { ID = ID, orderDate = orderDate, status = status, price = price });                        
+                    }
+                }
             }
             catch (SqlException) {
             }
@@ -88,16 +92,16 @@ namespace onlyDesktop2 {
                 showMyOrdersInListView(myOrders);
         }
 
-        private void showMyOrdersInListView(List<MyOrders> myOrders) {
+        private void showMyOrdersInListView(List<MyOrders> myOrders) {            
             foreach (MyOrders p in myOrders) {
                 myListView.Items.Add(p);
             }
-            areMyOrdersShown = true;
-
+            areMyOrdersShown = true;            
         }
 
         private void editDataButton_Click(object sender, RoutedEventArgs e) {
             endableEditing(true);
+            
         }
 
         private void finishEditionButton_Click(object sender, RoutedEventArgs e) {
@@ -131,6 +135,8 @@ namespace onlyDesktop2 {
             showOrHideMyData(Visibility.Visible);
             endableEditing(false);
             myListView.Visibility = Visibility.Collapsed;
+            complaintTextBox.Visibility = Visibility.Collapsed;
+            saveComplaintButton.Visibility = Visibility.Collapsed;
         }
 
         public void showOrHideMyData(Visibility x) {
@@ -189,21 +195,26 @@ namespace onlyDesktop2 {
 
        
         private void transferDataButton_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("dupa_");
+            
             dynamic selectedItem = myListView.SelectedItem;
-            int IDOfSelectedProduct = selectedItem.ID;
+            if (selectedItem != null) {
+                int IDOfSelectedProduct = selectedItem.ID;
             decimal price = selectedItem.price;
 
-            MessageBox.Show(price.ToString());
+            
+                MessageBox.Show(price.ToString());
 
-            MessageBox.Show("Proszę wykonac przelew na numer konta:\n 101010230000261395100000252183\n" +
-                 "Cena: " + price.ToString() + "\nJako tytuł przelewu proszę wpisać " + "'" + IDOfSelectedProduct.ToString() + "'");
+                MessageBox.Show("Proszę wykonac przelew na numer konta:\n 101010230000261395100000252183\n" +
+                     "Cena: " + price.ToString() + "\nJako tytuł przelewu proszę wpisać " + "'" + IDOfSelectedProduct.ToString() + "'");
+            }
         }
 
         private void complaintButton_Click(object sender, RoutedEventArgs e) {
+            myListView.Visibility = Visibility.Collapsed;
             complaintTextBox.IsEnabled = true;
+            complaintTextBox.Visibility = Visibility.Visible;
             saveComplaintButton.Visibility = Visibility.Visible;
-            
+            transferDataButton.Visibility = Visibility.Collapsed;
 
         }
 
@@ -226,8 +237,10 @@ namespace onlyDesktop2 {
                 SqlCommand command = new SqlCommand("insert into Reklamacje(Status, Data_zgloszenia, Opis_problemu,ID_Adresu,ID_Pracownika,ID_klienta) values('nierozpatrzona','" + thisDay + "','" + complaint + "'," + addressID + "," + worker + "," + MainWindow.clientID + ")" , conn);
                 command.ExecuteNonQuery();
                 complaintTextBox.IsEnabled = false;
-                complaintTextBox.Text = "Reklamacja została wysłana";
+                complaintTextBox.Text = "";
                 saveComplaintButton.Visibility = Visibility.Collapsed;
+                complaintTextBox.Visibility = Visibility.Collapsed;
+                MessageBox.Show("Reklamacja została wysłana");
 
             }
             catch (SqlException) {

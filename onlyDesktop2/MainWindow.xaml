@@ -88,7 +88,7 @@
         <Label x:Name="helloLabel" Content="Witaj " Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Collapsed"/>
         <Button x:Name="editAmountOfProductButton" Grid.Row="3" Grid.Column="1" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Zmień ilość produktu" FontSize="16" Foreground="Wheat" Background="#33686666" Click="editAmountOfProductButton_Click"/>
         <Button x:Name="addNewProductButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"  Margin="20,50,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Dodaj nowy produkt" FontSize="16" Foreground="Wheat" Background="#33686666" Click="addNewProductButton_Click"/>
-        <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed"  HorizontalAlignment="Left" Height="24" Margin="20,50,20,20" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="Wprowadz ilość" VerticalAlignment="Top" Width="120" GotFocus="amountOfProductTextBox_GotFocus"/>
+        <TextBox x:Name="amountOfProductTextBox" Visibility="Collapsed"  HorizontalAlignment="Stretch" Height="24" Margin="20,50,20,20" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="Wprowadz ilość" VerticalAlignment="Top" Width="185" GotFocus="amountOfProductTextBox_GotFocus"/>
         <Button x:Name="checkComplaintsButton" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Margin="20,20,20,20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Content="Sprawdz reklamacje" FontSize="16" Foreground="Wheat" Background="#33686666" Click="checkComplaintsButton_Click" />
 
 
