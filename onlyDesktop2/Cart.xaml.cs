@@ -87,12 +87,11 @@ namespace onlyDesktop2 {
 
 
             MessageBox.Show("Twoje zamowienie zostało złożone, w celu dokonania zapłaty przejdź do zamówień");
-            for (int i = 0; i < Order.giveMeProduct().Count; i++) {
-                MessageBox.Show(pricee.ToString());
-                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee);
-                MessageBox.Show(pricee.ToString());
+            for (int i = 0; i < Order.giveMeProduct().Count; i++) {                
+                addOrderToDatabase(Order.giveMeProduct()[i][0], Order.giveMeProduct()[i][1], pricee);                
             }
-
+            summary.Text = "0.00";
+            Order.clearAll();
             this.Close();
 
         }

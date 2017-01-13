@@ -75,8 +75,7 @@ namespace onlyDesktop2 {
                 }
                 else { 
                 SqlDataReader reader = command.ExecuteReader();               
-                while (reader.Read()) {
-                    MessageBox.Show("przed ID");
+                while (reader.Read()) {                    
                     int ID = reader.GetInt32(0);
                         string orderDate = reader["Data_zlozenia"].ToString();
                         string status = reader["Status_zamowienia"].ToString();

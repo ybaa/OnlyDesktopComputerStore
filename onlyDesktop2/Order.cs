@@ -21,6 +21,12 @@ namespace onlyDesktop2 {
             product.Add(IDAndAmount);
         }
 
+        public static void clearAll() {            
+            product.Clear();
+            prices.Clear();
+            
+        }
+
         public static void removeProduct(int id) {
             for (int i = 0; i < product.Count(); i++) {
                 if (product[i][0] == id) {
